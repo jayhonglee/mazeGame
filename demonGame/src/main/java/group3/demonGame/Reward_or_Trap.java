@@ -21,9 +21,11 @@ public class Reward_or_Trap {
     }
 
     public int get_value() {
+        return this.value;
     }
 
     public void set_value(int value) {
+        this.value = value;
     }
 
 }
