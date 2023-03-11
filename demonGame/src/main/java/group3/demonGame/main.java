@@ -12,7 +12,7 @@ import javax.swing.JPanel;
 
 public class main {
 	public static int widw=1000;
-	public static int widh=700;
+	public static int widh=800;
 	
 	public static void initail(JFrame f) {
 		f.setSize(widw,widh); //frame size
@@ -39,7 +39,7 @@ public class main {
 				objList.get(i).update();
 			}
 			jp.repaint();
-			try {Thread.sleep(50);}
+			try {Thread.sleep(100);}
 			catch(Exception e) {e.printStackTrace();}
 		}
 	}/*refresh to keep game operate*/
@@ -60,18 +60,104 @@ public class main {
 	public static demon dm;
 	public static enemies em1;
 	public static enemies em2;
+	public static wall wall;
+	public static door door1;
+	public static door door2;
+	public static pathfinder pf;
 	
 	public static void main(String arg[]) {
 		initail(jf);
-	    Image bgim=Toolkit.getDefaultToolkit().getImage("src/image/bg.png");/*background*/
-		bg=new gameObj( 0, 0, widw, widh, bgim);
-		Image dmim=Toolkit.getDefaultToolkit().getImage("src/image/demon.png");/*demon*/
-		dm=new demon( 10, 10, 50, 50, dmim);
-		Image em1im=Toolkit.getDefaultToolkit().getImage("src/image/enemies.png");/*enemy1*/
-		em1=new enemies( 200, 500, 70, 70, em1im);
-		Image em2im=Toolkit.getDefaultToolkit().getImage("src/image/enemies.png");/*enemy1*/
-		em2=new enemies( 500, 300, 70, 70, em1im);
+		pf=new pathfinder();
 		
+	    //Image bgim=Toolkit.getDefaultToolkit().getImage("src/image/bg.png");/*background*/
+		//bg=new gameObj( 0, 0, widw, widh, bgim);
+		Image d1im=Toolkit.getDefaultToolkit().getImage("src/image/door.png");
+		door door1=new door(50, 50, d1im);
+		Image dmim=Toolkit.getDefaultToolkit().getImage("src/image/demon.png");/*demon*/
+		dm=new demon(50, 50, dmim);
+		Image em1im=Toolkit.getDefaultToolkit().getImage("src/image/enemies.png");/*enemy1*/
+		enemies em1=new enemies( 700, 700, em1im);
+		Image em2im=Toolkit.getDefaultToolkit().getImage("src/image/enemies.png");/*enemy1*/
+		enemies em2=new enemies( 550, 450, em2im);
+		Image wallim=Toolkit.getDefaultToolkit().getImage("src/image/wall.png");
+		for(int i=0;i<widw;i+=50) {
+			new wall(i,0,wallim);
+			new wall(i,widh-50,wallim);
+		}
+		for(int i=50;i<widh;i+=50) {
+			new wall(0,i,wallim);
+			new wall(widw-50,i,wallim);
+		}
+		for(int i=50;i<350;i+=50) {
+			new wall(100,i,wallim);
+		}
+		for(int i=50;i<350;i+=50) {
+			new wall(850,i,wallim);
+		}
+		for(int i=100;i<350;i+=50) {
+			new wall(750,i,wallim);
+		}
+		for(int i=100;i<350;i+=50) {
+			new wall(650,i,wallim);
+		}
+		for(int i=100;i<250;i+=50) {
+			new wall(550,i,wallim);
+		}
+		for(int i=100;i<250;i+=50) {
+			new wall(200,i,wallim);
+		}
+		for(int i=200;i<350;i+=50) {
+			new wall(350,i,wallim);
+		}
+		for(int i=150;i<400;i+=50) {
+			new wall(i,300,wallim);
+		}
+		for(int i=200;i<550;i+=50) {
+			new wall(i,100,wallim);
+		}
+		for(int i=400;i<500;i+=50) {
+			new wall(i,300,wallim);
+		}
+		for(int i=550;i<650;i+=50) {
+			new wall(i,300,wallim);
+		}
+		new wall(700,100,wallim);
+		for(int i=100;i<900;i+=50) {
+			new wall(i,450,wallim);
+		}
+		for(int i=550;i<700;i+=50) {
+			new wall(100,i,wallim);
+		}	
+		for(int i=450;i<600;i+=50) {
+			new wall(250,i,wallim);
+		}
+		for(int i=550;i<700;i+=50) {
+			new wall(850,i,wallim);
+		}
+		for(int i=500;i<600;i+=50) {
+			new wall(550,i,wallim);
+		}
+		for(int i=550;i<650;i+=50) {
+			new wall(650,i,wallim);
+		}
+		for(int i=550;i<700;i+=50) {
+			new wall(450,i,wallim);
+		}
+		for(int i=500;i<850;i+=50) {
+			new wall(i,650,wallim);
+		}
+		for(int i=150;i<400;i+=50) {
+			new wall(i,650,wallim);
+		}
+		for(int i=750;i<850;i+=50) {
+			new wall(i,550,wallim);
+		}
+		new wall(350,550,wallim);
+		new wall(350,600,wallim);
+		Image d2im=Toolkit.getDefaultToolkit().getImage("src/image/door.png");
+		door door2=new door(900,50,d2im);
+		em1.getpath();
+		em2.getpath();
 		update();
 		
 	}

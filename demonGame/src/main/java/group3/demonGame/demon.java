@@ -1,7 +1,9 @@
 package game;
 import java.awt.Image;
 
-/*https://www.bing.com/images/search?view=detailV2&ccid=8ONaPRIK&id=9E904C9F463EEF473A7B9C95F3D877F5567EFDDC&thid=
+import java.util.ArrayList;
+
+/*image resource from https://www.bing.com/images/search?view=detailV2&ccid=8ONaPRIK&id=9E904C9F463EEF473A7B9C95F3D877F5567EFDDC&thid=
  * OIP.8ONaPRIKofHQ3QxjHeCmyQAAAA&mediaurl=https%3A%2F%2Fimages-wixmp-ed30a86b8c4ca887773594c2.wixmp.com%
  * 2Ff%2F18527ba2-6cdb-42e8-b5bf-1a43b8ea5bd3%2Fdd9i6k4-95077db9-9438-4da8-8b21-2ff540aca1bf.png%2Fv1%2Ffit%2Fw_150%
  * 2Ch_150%2Cstrp%2Ftactimon_sprite_by_hamurand22_dd9i6k4-150.png%3Ftoken%3DeyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.ey
@@ -21,22 +23,24 @@ public class demon extends gameObj {
 	boolean right=false;
 	public demon(int x, int y, Image ig) {
 		super(x, y, ig);
+		main.pf.set(x/50, y/50, main.objList.size()-1, 3);
 		}
 	public demon(int x,int y, int w, int h, Image ig) {
 		super(x, y, w, h, ig);
+		main.pf.set(x/50, y/50, main.objList.size()-1, 3);
 		}
 	public void update() {
-		if(up) {
-			y-=10;
+		if(up && main.pf.canPath(x/50, y/50-1)) {
+			y-=50;
 		}
-		else if(down) {
-			y+=10;
+		if(down && main.pf.canPath(x/50, y/50+1)){
+			y+=50;
 		}
-		else if(left) {
-			x-=10;
+		if(left && main.pf.canPath(x/50-1, y/50)){
+			x-=50;
 		}
-		else if(right) {
-			x+=10;
+		if(right && main.pf.canPath(x/50+1, y/50)){
+			x+=50;
 		}
 	}
 	public void move(int kc) {
@@ -66,6 +70,7 @@ public class demon extends gameObj {
 		else if(kc==68) {
 			right=false;
 		}
-	}	
+	}
+	
 
 }

@@ -3,12 +3,13 @@ package game;
 import java.awt.Graphics;
 import java.awt.Image;
 
-public class gameObj {
+
+public  class gameObj {
 	public gameObj(int x, int y, Image ig) {
 		this.x=x;
 		this.y=y;
-		w=100;
-		h=100;
+		w=50;
+		h=50;
 		img=ig;
 		main.objList.add(this);
 	}
@@ -24,6 +25,7 @@ public class gameObj {
 	public void draw(Graphics g) {
 		g.drawImage(img, x, y, w, h, null);
 	}
+	
 	protected int x;
 	protected int y;
 	protected int w;
