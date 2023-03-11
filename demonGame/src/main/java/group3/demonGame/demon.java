@@ -1,4 +1,5 @@
-package game;
+package group3.demonGame;
+
 import java.awt.Image;
 
 import java.util.ArrayList;
@@ -17,60 +18,58 @@ import java.util.ArrayList;
  * uvqhNxMF8fbuG6BPMAAAAA&ajaxhist=0&ajaxserp=0**/
 
 public class demon extends gameObj {
-	boolean up=false;
-	boolean down=false;
-	boolean left=false;
-	boolean right=false;
+	boolean up = false;
+	boolean down = false;
+	boolean left = false;
+	boolean right = false;
+
 	public demon(int x, int y, Image ig) {
 		super(x, y, ig);
-		main.pf.set(x/50, y/50, main.objList.size()-1, 3);
-		}
-	public demon(int x,int y, int w, int h, Image ig) {
+		main.pf.set(x / 50, y / 50, main.objList.size() - 1, 3);
+	}
+
+	public demon(int x, int y, int w, int h, Image ig) {
 		super(x, y, w, h, ig);
-		main.pf.set(x/50, y/50, main.objList.size()-1, 3);
-		}
+		main.pf.set(x / 50, y / 50, main.objList.size() - 1, 3);
+	}
+
 	public void update() {
-		if(up && main.pf.canPath(x/50, y/50-1)) {
-			y-=50;
+		if (up && main.pf.canPath(x / 50, y / 50 - 1)) {
+			y -= 50;
 		}
-		if(down && main.pf.canPath(x/50, y/50+1)){
-			y+=50;
+		if (down && main.pf.canPath(x / 50, y / 50 + 1)) {
+			y += 50;
 		}
-		if(left && main.pf.canPath(x/50-1, y/50)){
-			x-=50;
+		if (left && main.pf.canPath(x / 50 - 1, y / 50)) {
+			x -= 50;
 		}
-		if(right && main.pf.canPath(x/50+1, y/50)){
-			x+=50;
+		if (right && main.pf.canPath(x / 50 + 1, y / 50)) {
+			x += 50;
 		}
 	}
+
 	public void move(int kc) {
-		if(kc==87) {
-			up=true;
-		}
-		else if(kc==83) {
-			down=true;
-		}
-		else if(kc==65) {
-			left=true;
-		}
-		else if(kc==68) {
-			right=true;
+		if (kc == 87) {
+			up = true;
+		} else if (kc == 83) {
+			down = true;
+		} else if (kc == 65) {
+			left = true;
+		} else if (kc == 68) {
+			right = true;
 		}
 	}
+
 	public void release(int kc) {
-		if(kc==87) {
-			up=false;
-		}
-		else if(kc==83) {
-			down=false;
-		}
-		else if(kc==65) {
-			left=false;
-		}
-		else if(kc==68) {
-			right=false;
+		if (kc == 87) {
+			up = false;
+		} else if (kc == 83) {
+			down = false;
+		} else if (kc == 65) {
+			left = false;
+		} else if (kc == 68) {
+			right = false;
 		}
 	}
-	
 
 }
