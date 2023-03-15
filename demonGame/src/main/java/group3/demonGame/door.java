@@ -11,12 +11,12 @@ import java.awt.Image;
  * selectedIndex=0&ajaxhist=0&ajaxserp=0*/
 public class door extends gameObj {
 
-	public door(int x, int y, Image ig) {
-		super(x, y, ig);
+	public door(int x, int y, Image ig, GameManager gm) {
+		super(x, y, ig, gm);
 	}
 
-	public door(int x, int y, int w, int h, Image ig) {
-		super(x, y, w, h, ig);
+	public door(int x, int y, int w, int h, Image ig, GameManager gm) {
+		super(x, y, w, h, ig, gm);
 	}
 
 }

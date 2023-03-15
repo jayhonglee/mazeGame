@@ -21,14 +21,14 @@ public class enemies extends gameObj {
 	ArrayList<queueEle> path = null;
 	LocalDate nextAct;
 
-	public enemies(int x, int y, Image ig) {
-		super(x, y, ig);
+	public enemies(int x, int y, Image ig, GameManager gm) {
+		super(x, y, ig, gm);
 		nextAct = LocalDate.now().plus(Duration.ofSeconds((long) 0.5));
 		// TODO Auto-generated constructor stub
 	}
 
-	public enemies(int x, int y, int w, int h, Image ig) {
-		super(x, y, w, h, ig);
+	public enemies(int x, int y, int w, int h, Image ig, GameManager gm) {
+		super(x, y, w, h, ig, gm);
 	}
 
 	public void update() {
@@ -39,13 +39,13 @@ public class enemies extends gameObj {
 			}
 			Random rd = new Random();
 			int dr = rd.nextInt() % 4;
-			if (dr == 0 && main.pf.canPath(x / 50 + 1, y / 50)) {
+			if (dr == 0 && gm.pf.canPath(x / 50 + 1, y / 50)) {
 				x += 50;
-			} else if (dr == 1 && main.pf.canPath(x / 50 - 1, y / 50)) {
+			} else if (dr == 1 && gm.pf.canPath(x / 50 - 1, y / 50)) {
 				x -= 50;
-			} else if (dr == 2 && main.pf.canPath(x / 50, y / 50 + 1)) {
+			} else if (dr == 2 && gm.pf.canPath(x / 50, y / 50 + 1)) {
 				y += 50;
-			} else if (dr == 3 && main.pf.canPath(x / 50, y / 50 - 1)) {
+			} else if (dr == 3 && gm.pf.canPath(x / 50, y / 50 - 1)) {
 				y -= 50;
 			}
 			waitRound = 3;
@@ -61,7 +61,7 @@ public class enemies extends gameObj {
 	}
 
 	public void getpath() {
-		path = main.pf.getPath(x, y);
+		path = gm.pf.getPath(x, y);
 	}
 
 }

@@ -2,7 +2,6 @@ package group3.demonGame;
 
 import java.awt.Image;
 
-import java.util.ArrayList;
 
 /*image resource from https://www.bing.com/images/search?view=detailV2&ccid=8ONaPRIK&id=9E904C9F463EEF473A7B9C95F3D877F5567EFDDC&thid=
  * OIP.8ONaPRIKofHQ3QxjHeCmyQAAAA&mediaurl=https%3A%2F%2Fimages-wixmp-ed30a86b8c4ca887773594c2.wixmp.com%
@@ -23,27 +22,28 @@ public class demon extends gameObj {
 	boolean left = false;
 	boolean right = false;
 
-	public demon(int x, int y, Image ig) {
-		super(x, y, ig);
-		main.pf.set(x / 50, y / 50, main.objList.size() - 1, 3);
+
+	public demon(int x, int y, Image ig, GameManager gm) {
+		super(x, y, ig, gm);
+		gm.pf.set(x / 50, y / 50, gm.objList.size() - 1, 3);
 	}
 
-	public demon(int x, int y, int w, int h, Image ig) {
-		super(x, y, w, h, ig);
-		main.pf.set(x / 50, y / 50, main.objList.size() - 1, 3);
+	public demon(int x, int y, int w, int h, Image ig, GameManager gm) {
+		super(x, y, w, h, ig, gm);
+		gm.pf.set(x / 50, y / 50, gm.objList.size() - 1, 3);
 	}
 
 	public void update() {
-		if (up && main.pf.canPath(x / 50, y / 50 - 1)) {
+		if (up && gm.pf.canPath(x / 50, y / 50 - 1)) {
 			y -= 50;
 		}
-		if (down && main.pf.canPath(x / 50, y / 50 + 1)) {
+		if (down && gm.pf.canPath(x / 50, y / 50 + 1)) {
 			y += 50;
 		}
-		if (left && main.pf.canPath(x / 50 - 1, y / 50)) {
+		if (left && gm.pf.canPath(x / 50 - 1, y / 50)) {
 			x -= 50;
 		}
-		if (right && main.pf.canPath(x / 50 + 1, y / 50)) {
+		if (right && gm.pf.canPath(x / 50 + 1, y / 50)) {
 			x += 50;
 		}
 	}
