@@ -1,6 +1,7 @@
 package group3.demonGame;
 
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
@@ -8,6 +9,7 @@ import java.awt.Toolkit;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
+import java.util.Random;
 
 import javax.swing.JPanel;
 
@@ -32,12 +34,13 @@ public class GameManager extends JPanel implements Runnable {
 	 * game characters and map objects
 	 */
 	public ArrayList<gameObj> objList = new ArrayList<>();
-	public gameObj bg;
+	//public gameObj bg;
 		// map items
 	public wall wall;
 	Image d1im = Toolkit.getDefaultToolkit().getImage("src/image/door.png");
 	public door door1 = new door(50, 50, d1im, this);	
-	public door door2;
+	Image d2im = Toolkit.getDefaultToolkit().getImage("src/image/door.png");
+	public door door2 = new door(900,50,d2im, this);
 		// main character
 	Image dmim = Toolkit.getDefaultToolkit().getImage("src/image/demon.png");/* demon */
 	public demon dm = new demon(50, 50, dmim, this);
@@ -45,7 +48,19 @@ public class GameManager extends JPanel implements Runnable {
 	Image em1im = Toolkit.getDefaultToolkit().getImage("src/image/enemies.png");/* enemy1 */
 	public enemies em1 = new enemies(700, 700, em1im, this);
 	Image em2im = Toolkit.getDefaultToolkit().getImage("src/image/enemies.png");/* enemy2 */
-	public enemies em2 = new enemies(550, 450, em2im, this);
+	public enemies em2 = new enemies(700, 450, em2im, this);
+		// regular reward
+	Image r1 = Toolkit.getDefaultToolkit().getImage("src/image/reward1.png");
+	RegularReward rw1 = new RegularReward(350, 350, r1, this);
+	RegularReward rw11 = new RegularReward(150, 150, r1, this);
+	RegularReward rw111 = new RegularReward(150, 550, r1, this);
+		// bonus reward
+	Image r2 = Toolkit.getDefaultToolkit().getImage("src/image/reward2.png");
+	Random random=new Random();
+	int randIndex=random.nextInt(8)%8;
+		// trap
+	Image tr = Toolkit.getDefaultToolkit().getImage("src/image/trap.png");
+	Trap trap1 = new Trap(450, 350, tr, this);
 		
 
 	/**
@@ -53,19 +68,24 @@ public class GameManager extends JPanel implements Runnable {
 	 */
 	Time clock = new Time(this);
 	public int seconds = 0;
-	long timer = 0;
-//	Score points = new Score(this);
+	private long timer = 0;
+	Score points = new Score(this);
+	int score = 0;
+	// font used to display time and score
+	Font fontStyle = new Font("Serif", Font.PLAIN, 24);
+	
 	
 	/**
 	 * game loop
 	 */
 	boolean gameDone = false;
+	boolean win = false;
 	Thread game;
 	
 	//fps
-	int FPS = 10;
-	double updateWait = 1000000000/FPS;
-	double accumulator = 0;
+	private int FPS = 10;
+	private double updateWait = 1000000000/FPS;
+	private double accumulator = 0;
 	int frameCount =0;
 
 	
@@ -108,6 +128,7 @@ public class GameManager extends JPanel implements Runnable {
 			objList.get(i).draw(g2);
 		}
 		clock.draw(g2);
+		points.draw(g2);
 		g2.dispose();
 	} /* draw the game object */
 	
@@ -199,6 +220,35 @@ public class GameManager extends JPanel implements Runnable {
 		new wall(350, 600, wallim, this);
 		em1.getpath();
 		em2.getpath();
+		
+		// load rewards
+		if(randIndex==1  ){
+			new BonusReward(550,350, r2, this);
+		}
+		else if(randIndex==2) {
+			new BonusReward(800,500 , r2,this);
+		}
+		else if(randIndex==3) {
+			new BonusReward(550,400 , r2, this);
+		}
+		else if(randIndex==4) {
+			new BonusReward(100,500 , r2, this);
+		}
+		else if(randIndex==5) {
+			new BonusReward(700,150 , r2, this);
+		}
+		else if(randIndex==6) {
+			new BonusReward(600,50 , r2, this);
+		}
+		else if(randIndex==7) {
+			new BonusReward(550,50 , r2, this);
+		}
+		else if(randIndex==8) {
+			new BonusReward(450,900 , r2, this);
+		}
+		else {
+			new BonusReward(700,250 , r2, this);
+		}
 
 		// run game
 		long currentTime;

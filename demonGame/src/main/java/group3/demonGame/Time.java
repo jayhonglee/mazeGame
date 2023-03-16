@@ -1,16 +1,18 @@
 package group3.demonGame;
 
 import java.awt.Color;
-import java.awt.Font;
 import java.awt.Graphics2D;
 
-
+/**
+ * used to display time onto game screen
+ * @author myw11
+ *
+ */
 public class Time {
 	double playTime;
 	int minutes = 0;
 	GameManager gm;
-	Font fontStyle = new Font("Arial", Font.PLAIN, 40);
-	
+		
 	public Time(GameManager manager) {
 		this.gm = manager;
 	}
@@ -22,7 +24,7 @@ public class Time {
 	public void draw(Graphics2D g) {
 		
 		// used to write words on display screen
-		g.setFont(fontStyle);
+		g.setFont(gm.fontStyle);
 		g.setColor(Color.white);
 					
 		if(gm.gameDone) {

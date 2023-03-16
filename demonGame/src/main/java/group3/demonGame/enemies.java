@@ -17,14 +17,13 @@ import group3.demonGame.pathfinder.queueEle;
 nsightsToken%3Dccid_f2HdSPK1*cp_6072C87D5C2F6E0D876C7EBA71493478*mid_784BC1A715BC01A44A971C2828C1AE8E2BA5ECDB
 *simid_607993809944126315*thid_OIP.f2HdSPK1Z-IhRhGmCyERHQHaGQ&ajaxhist=0&ajaxserp=0*/
 public class enemies extends gameObj {
-	int waitRound = 5;
+	int waitRound = 0;
 	ArrayList<queueEle> path = null;
 	LocalDate nextAct;
 
 	public enemies(int x, int y, Image ig, GameManager gm) {
 		super(x, y, ig, gm);
 		nextAct = LocalDate.now().plus(Duration.ofSeconds((long) 0.5));
-		// TODO Auto-generated constructor stub
 	}
 
 	public enemies(int x, int y, int w, int h, Image ig, GameManager gm) {
@@ -32,11 +31,14 @@ public class enemies extends gameObj {
 	}
 
 	public void update() {
+		waitRound++;
+		if (waitRound==5){
+			waitRound=0;
+		}else{
+			return;
+		}
+		
 		if (path == null) {
-			if (waitRound != 0) {
-				waitRound--;
-				return;
-			}
 			Random rd = new Random();
 			int dr = rd.nextInt() % 4;
 			if (dr == 0 && gm.pf.canPath(x / 50 + 1, y / 50)) {
