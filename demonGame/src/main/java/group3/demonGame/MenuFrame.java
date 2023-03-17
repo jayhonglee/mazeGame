@@ -124,12 +124,12 @@ public class MenuFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void quitButtonActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_quitButtonActionPerformed
-        // TODO add your handling code here:
+        // close menu frame
         dispose();
     }// GEN-LAST:event_quitButtonActionPerformed
 
     private void startButtonActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_startButtonActionPerformed
-        // TODO add your handling code here:
+        // close menu frame
         dispose();
 
         // new window pop-up for game
@@ -157,7 +157,7 @@ public class MenuFrame extends javax.swing.JFrame {
     }// GEN-LAST:event_startButtonActionPerformed
 
     private void creditButtonActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_creditButtonActionPerformed
-        // TODO add your handling code here:
+        // close menu frame
         dispose();
         // Open CreditFrame
         new CreditFrame().setVisible(true);
