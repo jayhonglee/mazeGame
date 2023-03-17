@@ -4,7 +4,6 @@ import java.awt.Image;
 import java.time.Duration;
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Random;
 
 import group3.demonGame.pathfinder.queueEle;
 
@@ -18,6 +17,7 @@ nsightsToken%3Dccid_f2HdSPK1*cp_6072C87D5C2F6E0D876C7EBA71493478*mid_784BC1A715B
 *simid_607993809944126315*thid_OIP.f2HdSPK1Z-IhRhGmCyERHQHaGQ&ajaxhist=0&ajaxserp=0*/
 public class enemies extends gameObj {
 	int waitRound = 0;
+	int test = 0;
 	ArrayList<queueEle> path = null;
 	LocalDate nextAct;
 
@@ -32,36 +32,21 @@ public class enemies extends gameObj {
 
 	public void update() {
 		waitRound++;
-		if (waitRound==5){
+
+		if (waitRound==8){
 			waitRound=0;
 		}else{
 			return;
 		}
-		
-		if (path == null) {
-			Random rd = new Random();
-			int dr = rd.nextInt() % 4;
-			if (dr == 0 && gm.pf.canPath(x / 50 + 1, y / 50)) {
-				x += 50;
-			} else if (dr == 1 && gm.pf.canPath(x / 50 - 1, y / 50)) {
-				x -= 50;
-			} else if (dr == 2 && gm.pf.canPath(x / 50, y / 50 + 1)) {
-				y += 50;
-			} else if (dr == 3 && gm.pf.canPath(x / 50, y / 50 - 1)) {
-				y -= 50;
-			}
-			waitRound = 3;
-		} else {
-			if (path.isEmpty()) {
-				path = null;
-				return;
-			}
-			queueEle ele = path.remove(path.size() - 1);
-			x = ele.x * 50;
-			y = ele.y * 50;
-		}
-	}
+		path = gm.pf.getPath(x, y);
+		queueEle ele=path.remove(path.size()-1);
+		x=ele.x*50;
+		y=ele.y*50;
+		System.out.println(path.size());
+		return;
 
+
+	}
 	public void getpath() {
 		path = gm.pf.getPath(x, y);
 	}

@@ -20,7 +20,7 @@ public class pathfinder {
 	}
 
 	public void set(int x, int y, int loc, int hd) {
-		bitmap[y][x] = loc * 10 + hd;
+		bitmap[y][x] = hd;
 
 	}
 
@@ -58,19 +58,13 @@ public class pathfinder {
 			this.e = e;
 			hl = false;
 		}
-		// public boolean operator >(queueEle ele){
-
-		// }
-
 	}
 
 	static Comparator<queueEle> eleCmp = new Comparator<queueEle>() {
 		@Override
 		public int compare(queueEle o1, queueEle o2) {
-			// TODO Auto-generated method stub
 			return (o1.c + o1.e) - (o2.c + o2.e);
 		}
-
 	};
 
 	public boolean inRange(int x, int y) {

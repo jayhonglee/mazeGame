@@ -13,10 +13,17 @@ import java.util.Random;
 
 import javax.swing.JPanel;
 
-
+/**
+ * GameManager manages all the game elements and brings them together
+ * to run the game. 
+ * 
+ * @author myw11
+ *
+ */
 public class GameManager extends JPanel implements Runnable {
 	/**
-	 * needed because JPanel is a serializable class
+	 * needed because JPanel is a serializable class. 
+	 * number would differentiate it from other JPanel, etc. types.
 	 */
 	private static final long serialVersionUID = -4593365196307425464L;
 	
@@ -80,7 +87,7 @@ public class GameManager extends JPanel implements Runnable {
 	
 	
 	/**
-	 * game loop
+	 * variables used in to run the game / in the game loop
 	 */
 	boolean gameDone = false;
 	boolean win = false;
@@ -93,7 +100,6 @@ public class GameManager extends JPanel implements Runnable {
 	int frameCount =0;
 
 	
-
 	// constructor
 	public GameManager() {
 		// set screen size
@@ -113,7 +119,7 @@ public class GameManager extends JPanel implements Runnable {
 	
 	
 	/**
-	 * update game 
+	 * updates the game elements (position of characters) 
 	 */
 	public void update() {
 		//update position of characters
@@ -123,7 +129,9 @@ public class GameManager extends JPanel implements Runnable {
 	}/* refresh to keep game operate */
 	
 	/**
-	 * update game visuals; called with repaint()
+	 * updates game visuals; called with repaint()
+	 * 
+	 * @param g 
 	 */
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
