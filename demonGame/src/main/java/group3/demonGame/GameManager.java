@@ -230,8 +230,6 @@ public class GameManager extends JPanel implements Runnable {
 		}
 		new wall(350, 550, wallim, this);
 		new wall(350, 600, wallim, this);
-		em1.getpath();
-		em2.getpath();
 		
 		// load rewards
 		if(randIndex==1  ){
