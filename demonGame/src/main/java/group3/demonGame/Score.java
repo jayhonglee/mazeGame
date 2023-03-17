@@ -18,38 +18,37 @@ public class Score {
 		this.gm = manager;
 	}
 
-//	// get score
-//	public int getScore() {
-//		return this.score;
-//	}
-//
-//	// add to score
-//	public void increaseScore(int value) {
-//		this.score += value;
-//	}
-//
-//	// subtract from score
-//	public void decreaseScore(int value) {
-//		this.score -= value;
-//	}
-	
+	// // get score
+	// public int getScore() {
+	// return this.score;
+	// }
+	//
+	// // add to score
+	// public void increaseScore(int value) {
+	// this.score += value;
+	// }
+	//
+	// // subtract from score
+	// public void decreaseScore(int value) {
+	// this.score -= value;
+	// }
+
 	public void draw(Graphics2D g) {
-		
+
 		// used to write words on display screen
 		g.setFont(gm.fontStyle);
 		g.setColor(Color.red);
-					
-		if(gm.gameDone) {
+
+		if (gm.gameDone) {
 			// display final score at game's end
 			String scoreMSG = "SCORE: " + gm.score;
-			g.drawString(scoreMSG, 500,300);
-			
-		} else {
-			
-			g.drawString("Score:" + gm.score, 200, 50); // y indicates baseline of text!!
-			//System.out.println(minutes + ":" + gm.seconds);
-		}	
-	}
+			g.drawString(scoreMSG, 500, 300);
 
+		} else {
+
+			g.drawString("Score:" + gm.score, 200, 50); // y indicates baseline of text!!
+			// System.out.println(minutes + ":" + gm.seconds);
+		}
+	}
 
 }
