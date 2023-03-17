@@ -37,7 +37,7 @@ public class Score {
 		
 		// used to write words on display screen
 		g.setFont(gm.fontStyle);
-		g.setColor(Color.black);
+		g.setColor(Color.red);
 					
 		if(gm.gameDone) {
 			// display final score at game's end
