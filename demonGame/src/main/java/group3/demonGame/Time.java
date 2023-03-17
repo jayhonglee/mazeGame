@@ -24,7 +24,7 @@ public class Time {
 	public void draw(Graphics2D g) {
 		
 		// used to write words on display screen
-		g.setColor(Color.white);
+		g.setColor(Color.red);
 		g.setFont(gm.fontStyle);
 		
 					
@@ -39,7 +39,7 @@ public class Time {
 				minutes = (int)(gm.seconds/60);
 				gm.seconds = (gm.seconds)%60;
 			}
-			g.drawString(minutes + ":" + gm.seconds, 50, 50); // y indicates baseline of text!!
+			g.drawString("Time: " + minutes + ":" + gm.seconds, 50, 50); // y indicates baseline of text!!
 			//System.out.println(minutes + ":" + gm.seconds);
 		}	
 		

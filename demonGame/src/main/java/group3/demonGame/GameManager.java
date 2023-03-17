@@ -25,12 +25,12 @@ public class GameManager extends JPanel implements Runnable {
 	 */
 	// size of gameplay area (game map)
 	public int widw = 1000; // width
-	public int widh = 800; // height
+	public int widh = 800;// height
 	// Ui addition
 	//int uih = 100;
 	
 	// collision
-	public pathfinder pf = new pathfinder(this);
+	pathfinder pf = new pathfinder(this);
 	
 	/**
 	 * game characters and map objects
@@ -42,29 +42,29 @@ public class GameManager extends JPanel implements Runnable {
 //	Image d1im = Toolkit.getDefaultToolkit().getImage("src/image/door.png");
 //	public door door1 = new door(50, 50, d1im, this);	
 	Image d2im = Toolkit.getDefaultToolkit().getImage("src/image/door.png");
-	public door door2 = new door(900,50,d2im, this);
+	public door door2 = new door(this,900,50,d2im);
 		// main character
 	Image dmim = Toolkit.getDefaultToolkit().getImage("src/image/demon.png");/* demon */
-	public demon dm = new demon(50, 50, dmim, this);
+	public demon dm = new demon(this,50, 50, dmim);
 		// moving enemies
 	Image em1im = Toolkit.getDefaultToolkit().getImage("src/image/enemies.png");/* enemy1 */
-	public enemies em1 = new enemies(700, 700, em1im, this);
+	public enemies em1 = new enemies(this,700, 700, em1im);
 	Image em2im = Toolkit.getDefaultToolkit().getImage("src/image/enemies.png");/* enemy2 */
-	public enemies em2 = new enemies(700, 450, em2im, this);
+	public enemies em2 = new enemies(this,700, 450, em2im);
 		// regular reward
 	Image r1 = Toolkit.getDefaultToolkit().getImage("src/image/reward1.png");
-	RegularReward rw1 = new RegularReward(350, 350, r1, this);
-	RegularReward rw11 = new RegularReward(150, 150, r1, this);
-	RegularReward rw111 = new RegularReward(150, 550, r1, this);
+	RegularReward rw1 = new RegularReward(this,350, 350, r1);
+	RegularReward rw11 = new RegularReward(this,150, 150, r1);
+	RegularReward rw111 = new RegularReward(this,150, 550, r1);
 		// bonus reward
 	Image r2 = Toolkit.getDefaultToolkit().getImage("src/image/reward2.png");
 	Random random=new Random();
 	int randIndex=random.nextInt(8)%8;
 		// trap
 	Image tr = Toolkit.getDefaultToolkit().getImage("src/image/trap.png");
-	Trap trap1 = new Trap(450, 350, tr, this);
-	Trap trap2 = new Trap(700, 700, tr, this);
-	Trap trap3 = new Trap(150, 200, tr, this);
+	Trap trap1 = new Trap( this,450, 350, tr);
+	Trap trap2 = new Trap( this,700, 700, tr);
+	Trap trap3 = new Trap( this,150, 200, tr);
 		
 
 	/**
@@ -149,109 +149,107 @@ public class GameManager extends JPanel implements Runnable {
 		// load map
 		Image wallim = Toolkit.getDefaultToolkit().getImage("src/image/wall.png");
 		for (int i = 0; i < widw; i += 50) {
-			new wall(i, 0, wallim, this);
-			new wall(i, widh - 50, wallim, this);
+			new wall( this,i, 0, wallim);
+			new wall(this,i, widh - 50, wallim);
 		}
 		for (int i = 50; i < widh; i += 50) {
-			new wall(0, i, wallim, this);
-			new wall(widw - 50, i, wallim, this);
+			new wall(this,0, i, wallim);
+			new wall(this,widw - 50, i, wallim);
 		}
 		for (int i = 50; i < 350; i += 50) {
-			new wall(100, i, wallim, this);
+			new wall(this,100, i, wallim);
 		}
 		for (int i = 50; i < 350; i += 50) {
-			new wall(850, i, wallim, this);
+			new wall(this,850, i, wallim);
 		}
 		for (int i = 100; i < 350; i += 50) {
-			new wall(750, i, wallim, this);
+			new wall(this,750, i, wallim);
 		}
 		for (int i = 100; i < 350; i += 50) {
-			new wall(650, i, wallim, this);
+			new wall(this,650, i, wallim);
 		}
 		for (int i = 100; i < 250; i += 50) {
-			new wall(550, i, wallim, this);
+			new wall(this,550, i, wallim);
 		}
 		for (int i = 100; i < 250; i += 50) {
-			new wall(200, i, wallim, this);
+			new wall(this,200, i, wallim);
 		}
 		for (int i = 200; i < 350; i += 50) {
-			new wall(350, i, wallim, this);
+			new wall(this,350, i, wallim);
 		}
 		for (int i = 150; i < 400; i += 50) {
-			new wall(i, 300, wallim, this);
+			new wall(this,i, 300, wallim);
 		}
 		for (int i = 200; i < 550; i += 50) {
-			new wall(i, 100, wallim, this);
+			new wall(this,i, 100, wallim);
 		}
 		for (int i = 400; i < 500; i += 50) {
-			new wall(i, 300, wallim, this);
+			new wall(this,i, 300, wallim);
 		}
 		for (int i = 550; i < 650; i += 50) {
-			new wall(i, 300, wallim, this);
+			new wall(this,i, 300, wallim);
 		}
-		new wall(700, 100, wallim, this);
+		new wall(this,700, 100, wallim);
 		for (int i = 100; i < 900; i += 50) {
-			new wall(i, 450, wallim, this);
+			new wall(this,i, 450, wallim);
 		}
 		for (int i = 550; i < 700; i += 50) {
-			new wall(100, i, wallim, this);
+			new wall(this,100, i, wallim);
 		}
 		for (int i = 450; i < 600; i += 50) {
-			new wall(250, i, wallim, this);
+			new wall(this,250, i, wallim);
 		}
 		for (int i = 550; i < 700; i += 50) {
-			new wall(850, i, wallim, this);
+			new wall(this,850, i, wallim);
 		}
 		for (int i = 500; i < 600; i += 50) {
-			new wall(550, i, wallim, this);
+			new wall(this,550, i, wallim);
 		}
 		for (int i = 550; i < 650; i += 50) {
-			new wall(650, i, wallim, this);
+			new wall(this,650, i, wallim);
 		}
 		for (int i = 550; i < 700; i += 50) {
-			new wall(450, i, wallim, this);
+			new wall(this,450, i, wallim);
 		}
 		for (int i = 500; i < 850; i += 50) {
-			new wall(i, 650, wallim, this);
+			new wall(this,i, 650, wallim);
 		}
 		for (int i = 150; i < 400; i += 50) {
-			new wall(i, 650, wallim, this);
+			new wall(this,i, 650, wallim);
 		}
 		for (int i = 750; i < 850; i += 50) {
-			new wall(i, 550, wallim, this);
+			new wall(this,i, 550, wallim);
 		}
-		new wall(350, 550, wallim, this);
-		new wall(350, 600, wallim, this);
-		em1.getpath();
-		em2.getpath();
+		new wall(this,350, 550, wallim);
+		new wall(this,350, 600, wallim);
 		
 		// load rewards
 		if(randIndex==1  ){
-			new BonusReward(550,350, r2, this);
+			new BonusReward(this,550,350, r2);
 		}
 		else if(randIndex==2) {
-			new BonusReward(800,500 , r2,this);
+			new BonusReward(this,800,500 , r2);
 		}
 		else if(randIndex==3) {
-			new BonusReward(550,400 , r2, this);
+			new BonusReward(this,550,400 , r2);
 		}
 		else if(randIndex==4) {
-			new BonusReward(100,500 , r2, this);
+			new BonusReward(this,100,500 , r2);
 		}
 		else if(randIndex==5) {
-			new BonusReward(700,150 , r2, this);
+			new BonusReward(this,700,150 , r2);
 		}
 		else if(randIndex==6) {
-			new BonusReward(600,50 , r2, this);
+			new BonusReward(this,600,50 , r2);
 		}
 		else if(randIndex==7) {
-			new BonusReward(550,50 , r2, this);
+			new BonusReward(this,550,50 , r2);
 		}
 		else if(randIndex==8) {
-			new BonusReward(450,900 , r2, this);
+			new BonusReward(this,450,900 , r2);
 		}
 		else {
-			new BonusReward(700,250 , r2, this);
+			new BonusReward(this,700,250 , r2);
 		}
 
 		// run game

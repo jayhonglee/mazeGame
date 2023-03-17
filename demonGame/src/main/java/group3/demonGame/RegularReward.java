@@ -5,8 +5,8 @@ import java.awt.Image;
 public class RegularReward extends gameObj{
 	private int points = 100;
 	
-    public RegularReward(int x, int y, Image ig, GameManager gm) {
-        super(x, y, ig, gm);
+    public RegularReward(GameManager gm,int x, int y, Image ig) {
+        super(gm,x, y, ig);
     }
 
     public void getReward(){

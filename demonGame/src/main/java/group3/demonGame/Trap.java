@@ -5,10 +5,10 @@ import java.awt.*;
 
 
 public class Trap extends gameObj {
-	private int points  = -50;
+	private int points  = -100;
 
-	 public Trap(int x, int y, Image ig, GameManager gm) {
-	        super(x, y, ig, gm);
+	 public Trap(GameManager gm,int x, int y, Image ig) {
+	        super(gm,x, y, ig);
 	 }
 
     public void trapCatch(){
