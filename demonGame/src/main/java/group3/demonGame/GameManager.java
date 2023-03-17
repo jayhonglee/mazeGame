@@ -27,7 +27,10 @@ public class GameManager extends JPanel implements Runnable {
 	 * needed because JPanel is a serializable class.
 	 * number would differentiate it from other JPanel, etc. types.
 	 */
+
 	private static final long serialVersionUID = -4593365196307425464L;
+
+	Score score = new Score(this);
 
 	/**
 	 * screen settings
@@ -62,18 +65,19 @@ public class GameManager extends JPanel implements Runnable {
 	public enemies em2 = new enemies(700, 450, em2im, this);
 	// regular reward
 	Image r1 = Toolkit.getDefaultToolkit().getImage("src/image/reward1.png");
-	RegularReward rw1 = new RegularReward(350, 350, r1, this);
-	RegularReward rw11 = new RegularReward(150, 150, r1, this);
-	RegularReward rw111 = new RegularReward(150, 550, r1, this);
+	RegularReward rw1 = new RegularReward(350, 350, r1, this, score);
+	RegularReward rw11 = new RegularReward(150, 150, r1, this, score);
+	RegularReward rw111 = new RegularReward(150, 550, r1, this, score);
 	// bonus reward
 	Image r2 = Toolkit.getDefaultToolkit().getImage("src/image/reward2.png");
 	Random random = new Random();
 	int randIndex = random.nextInt(8) % 8;
+
 	// trap
 	Image tr = Toolkit.getDefaultToolkit().getImage("src/image/trap.png");
-	Trap trap1 = new Trap(450, 350, tr, this);
-	Trap trap2 = new Trap(700, 700, tr, this);
-	Trap trap3 = new Trap(150, 200, tr, this);
+	Trap trap1 = new Trap(450, 350, tr, this, score);
+	Trap trap2 = new Trap(700, 700, tr, this, score);
+	Trap trap3 = new Trap(150, 200, tr, this, score);
 
 	/**
 	 * UI: time and score
@@ -81,8 +85,8 @@ public class GameManager extends JPanel implements Runnable {
 	Time clock = new Time(this);
 	public int seconds = 0;
 	private long timer = 0;
-	Score points = new Score(this);
-	int score = 0;
+	// Score points = new Score(this);
+	// int score = 0;
 	// font used to display time and score
 	Font fontStyle = new Font("Serif", Font.PLAIN, 24);
 
@@ -143,7 +147,8 @@ public class GameManager extends JPanel implements Runnable {
 			objList.get(i).draw(g2);
 		}
 		clock.draw(g2);
-		points.draw(g2);
+		// points.draw(g2);
+		score.draw(g2);
 		g2.dispose();
 	} /* draw the game object */
 
@@ -157,6 +162,10 @@ public class GameManager extends JPanel implements Runnable {
 
 	@Override
 	public void run() {
+		// center the gameFrame
+		JFrame gameFrame = (JFrame) SwingUtilities.getWindowAncestor(this);
+		gameFrame.setLocationRelativeTo(null);
+
 		// load map
 		Image wallim = Toolkit.getDefaultToolkit().getImage("src/image/wall.png");
 		for (int i = 0; i < widw; i += 50) {
@@ -236,23 +245,23 @@ public class GameManager extends JPanel implements Runnable {
 
 		// load rewards
 		if (randIndex == 1) {
-			new BonusReward(550, 350, r2, this);
+			new BonusReward(550, 350, r2, this, score);
 		} else if (randIndex == 2) {
-			new BonusReward(800, 500, r2, this);
+			new BonusReward(800, 500, r2, this, score);
 		} else if (randIndex == 3) {
-			new BonusReward(550, 400, r2, this);
+			new BonusReward(550, 400, r2, this, score);
 		} else if (randIndex == 4) {
-			new BonusReward(100, 500, r2, this);
+			new BonusReward(100, 500, r2, this, score);
 		} else if (randIndex == 5) {
-			new BonusReward(700, 150, r2, this);
+			new BonusReward(700, 150, r2, this, score);
 		} else if (randIndex == 6) {
-			new BonusReward(600, 50, r2, this);
+			new BonusReward(600, 50, r2, this, score);
 		} else if (randIndex == 7) {
-			new BonusReward(550, 50, r2, this);
+			new BonusReward(550, 50, r2, this, score);
 		} else if (randIndex == 8) {
-			new BonusReward(450, 900, r2, this);
+			new BonusReward(450, 900, r2, this, score);
 		} else {
-			new BonusReward(700, 250, r2, this);
+			new BonusReward(700, 250, r2, this, score);
 		}
 
 		// run game
@@ -280,12 +289,20 @@ public class GameManager extends JPanel implements Runnable {
 			}
 			if (gameDone) {
 				game = null;
-				// get the current gameFrame
-				JFrame gameFrame = (JFrame) SwingUtilities.getWindowAncestor(this);
 				// close the gameFrame
 				gameFrame.dispose();
 				// open End Frame
-				new EndFrame().setVisible(true);
+				EndFrame endframe = new EndFrame();
+				endframe.setVisible(true);
+				// display final score
+				endframe.scoreValue.setText(String.valueOf(score.getScore()));
+				endframe.timeValue.setText(String.valueOf(seconds));
+				if (win) {
+					endframe.result.setText("YOU WIN");
+				} else {
+					endframe.result.setText("GAME OVER");
+				}
+
 			}
 		}
 

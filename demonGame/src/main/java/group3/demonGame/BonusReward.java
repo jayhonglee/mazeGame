@@ -4,11 +4,13 @@ import java.awt.Image;
 
 
 public class BonusReward extends gameObj{
-	private int points = 250;
+    private int points = 250;
     private int count=0;
+    private Score score;
 
-    public BonusReward(int x, int y, Image ig, GameManager gm) {
+    public BonusReward(int x, int y, Image ig, GameManager gm, Score score) {
         super(x, y, ig, gm);
+        this.score = score;
 
         new Thread(new Runnable() {
             @Override
@@ -30,7 +32,8 @@ public class BonusReward extends gameObj{
     }
 
     public void getReward(){
-        this.gm.score += points;
+//        this.gm.score += points;
+          score.increaseScore(points);
     }
 
     @Override

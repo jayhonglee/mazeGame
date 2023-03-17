@@ -13,25 +13,27 @@ import java.awt.Graphics2D;
  */
 public class Score {
 	GameManager gm;
+        private int score;
 
 	public Score(GameManager manager) {
 		this.gm = manager;
+                this.score = 0;
 	}
 
-	// // get score
-	// public int getScore() {
-	// return this.score;
-	// }
-	//
-	// // add to score
-	// public void increaseScore(int value) {
-	// this.score += value;
-	// }
-	//
-	// // subtract from score
-	// public void decreaseScore(int value) {
-	// this.score -= value;
-	// }
+	 // get score
+        public int getScore() {
+            return score;
+        }
+	
+	 // add to score
+	 public void increaseScore(int value) {
+            score += value;
+	 }
+	
+	 // subtract from score
+	 public void decreaseScore(int value) {
+            score -= value;
+	 }
 
 	public void draw(Graphics2D g) {
 
@@ -41,12 +43,12 @@ public class Score {
 
 		if (gm.gameDone) {
 			// display final score at game's end
-			String scoreMSG = "SCORE: " + gm.score;
+			String scoreMSG = "SCORE: " + this.score;
 			g.drawString(scoreMSG, 500, 300);
 
 		} else {
 
-			g.drawString("Score:" + gm.score, 200, 50); // y indicates baseline of text!!
+			g.drawString("Score:" + this.score, 200, 50); // y indicates baseline of text!!
 			// System.out.println(minutes + ":" + gm.seconds);
 		}
 	}

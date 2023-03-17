@@ -4,6 +4,7 @@ import java.awt.Graphics2D;
 import java.awt.Image;
 
 public class gameObj {
+    
 	public gameObj(int x, int y, Image ig, GameManager gm) {
 		this.gm = gm;
 		this.x = x;
@@ -30,7 +31,7 @@ public class gameObj {
 	public void draw(Graphics2D g) {
 		g.drawImage(img, x, y, w, h, null);
 	}
-
+        
 	protected int x;
 	protected int y;
 	protected int w;
