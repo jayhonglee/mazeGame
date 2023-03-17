@@ -24,8 +24,9 @@ public class Time {
 	public void draw(Graphics2D g) {
 		
 		// used to write words on display screen
-		g.setFont(gm.fontStyle);
 		g.setColor(Color.white);
+		g.setFont(gm.fontStyle);
+		
 					
 		if(gm.gameDone) {
 			// display final score at game's end

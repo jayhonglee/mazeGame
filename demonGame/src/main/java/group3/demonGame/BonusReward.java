@@ -4,7 +4,7 @@ import java.awt.Image;
 
 
 public class BonusReward extends gameObj{
-	private int points = 300;
+	private int points = 250;
     private int count=0;
 
     public BonusReward(int x, int y, Image ig, GameManager gm) {

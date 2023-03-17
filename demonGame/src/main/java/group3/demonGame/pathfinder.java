@@ -116,9 +116,9 @@ public class pathfinder {
 					}
 				}
 
-				for (int i = 0; i < path.size(); i++) {
-					System.out.println(path.get(i).x + "\t" + path.get(i).y);
-				}
+//				for (int i = 0; i < path.size(); i++) {
+//					System.out.println(path.get(i).x + "\t" + path.get(i).y);
+//				}
 				/*
 				 * for(int i=0;i<main.widh/50;i++) {
 				 * for(int j=0;j<main.widw510;j++) {

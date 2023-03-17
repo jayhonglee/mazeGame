@@ -18,14 +18,16 @@ public class GameManager extends JPanel implements Runnable {
 	/**
 	 * needed because JPanel is a serializable class
 	 */
-	private static final long serialVersionUID = 1L;
-	
+	private static final long serialVersionUID = -4593365196307425464L;
 	
 	/**
 	 * screen settings
 	 */
+	// size of gameplay area (game map)
 	public int widw = 1000; // width
 	public int widh = 800; // height
+	// Ui addition
+	//int uih = 100;
 	
 	// collision
 	public pathfinder pf = new pathfinder(this);
@@ -37,8 +39,8 @@ public class GameManager extends JPanel implements Runnable {
 	//public gameObj bg;
 		// map items
 	public wall wall;
-	Image d1im = Toolkit.getDefaultToolkit().getImage("src/image/door.png");
-	public door door1 = new door(50, 50, d1im, this);	
+//	Image d1im = Toolkit.getDefaultToolkit().getImage("src/image/door.png");
+//	public door door1 = new door(50, 50, d1im, this);	
 	Image d2im = Toolkit.getDefaultToolkit().getImage("src/image/door.png");
 	public door door2 = new door(900,50,d2im, this);
 		// main character
@@ -61,6 +63,8 @@ public class GameManager extends JPanel implements Runnable {
 		// trap
 	Image tr = Toolkit.getDefaultToolkit().getImage("src/image/trap.png");
 	Trap trap1 = new Trap(450, 350, tr, this);
+	Trap trap2 = new Trap(700, 700, tr, this);
+	Trap trap3 = new Trap(150, 200, tr, this);
 		
 
 	/**
