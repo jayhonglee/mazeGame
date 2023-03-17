@@ -99,15 +99,19 @@ public class pathfinder {
 				tempMap[temp.y][temp.x].hl = true;
 				for (int i = 0; i < total; i++) {
 					path.add(temp);
-					if (inRange(temp.x + 1, temp.y) && tempMap[temp.y][temp.x + 1].c == total - i - 1) {
-						temp = tempMap[temp.y][temp.x + 1];
-					} else if (inRange(temp.x - 1, temp.y) && tempMap[temp.y][temp.x - 1].c == total - i - 1) {
-						temp = tempMap[temp.y][temp.x - 1];
-					} else if (inRange(temp.x, temp.y + 1) && tempMap[temp.y + 1][temp.x].c == total - i - 1) {
-						temp = tempMap[temp.y + 1][temp.x];
-					} else if (inRange(temp.x, temp.y - 1) && tempMap[temp.x][temp.y - 1].c == total - i - 1) {
-						temp = tempMap[temp.x][temp.y - 1];
+					if(inRange(temp.x+1,temp.y) && tempMap[temp.y][temp.x+1].c==total-i-1) {
+						temp=tempMap[temp.y][temp.x+1];
 					}
+					else if(inRange(temp.x-1,temp.y) && tempMap[temp.y][temp.x-1].c==total-i-1) {
+						temp=tempMap[temp.y][temp.x-1];
+					}
+					else if(inRange(temp.x,temp.y+1) && tempMap[temp.y+1][temp.x].c==total-i-1) {
+						temp=tempMap[temp.y+1][temp.x];
+					}
+					else if(inRange(temp.x,temp.y-1) && tempMap[temp.y-1][temp.x].c==total-i-1) {
+						temp=tempMap[temp.y-1][temp.x];
+					}
+
 				}
 
 //				for (int i = 0; i < path.size(); i++) {

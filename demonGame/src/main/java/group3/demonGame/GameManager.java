@@ -126,6 +126,8 @@ public class GameManager extends JPanel implements Runnable {
 		for (int i = 0; i < objList.size(); i++) {
 			objList.get(i).update();
 		}
+		try {Thread.sleep(100);}
+		catch(Exception e) {e.printStackTrace();}
 	}/* refresh to keep game operate */
 	
 	/**
