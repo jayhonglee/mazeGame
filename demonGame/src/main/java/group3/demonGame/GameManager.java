@@ -11,6 +11,8 @@ import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.Random;
 
+import javax.swing.SwingUtilities;
+import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 /**
@@ -278,6 +280,12 @@ public class GameManager extends JPanel implements Runnable {
 			}
 			if (gameDone) {
 				game = null;
+				// get the current gameFrame
+				JFrame gameFrame = (JFrame) SwingUtilities.getWindowAncestor(this);
+				// close the gameFrame
+				gameFrame.dispose();
+				// open End Frame
+				new EndFrame().setVisible(true);
 			}
 		}
 
