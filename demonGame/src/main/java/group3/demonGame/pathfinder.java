@@ -4,7 +4,16 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.PriorityQueue;
 
+/**
+ * 
+ * 
+ * @author zeyoup
+ *
+ */
 public class pathfinder {
+	/**
+	 * Create a bitmap for game map. It can find the coordinate or path for gameObj easily. Set 1 in each cell in bitmap.
+	 */
 	GameManager gm;
 	public int bitmap[][]; 
 	
@@ -18,11 +27,27 @@ public class pathfinder {
 			}
 		}
 	}
-
+	/**
+	 * set flag for gameobj to judge collision easily.
+	 * 
+	 * @param x X coordinate of gameobj
+	 * @param y Y coordinate of gameobj
+	 * @param loc which gameobj from arraylist
+	 * @param hd a flag to judge collision
+	 */
+	
 	public void set(int x, int y, int loc, int hd) {
 		bitmap[y][x] = hd;
 
 	}
+	
+	/**
+	 * The method create a condition for path. If a cell contain 2, you cannot path the cell. Only path one cell for appropriate cell size
+	 * 
+	 * @param X coordinate of gameobj
+	 * @param y Y coordinate of gameobj
+	 * @return true if can path, false can't path
+	 */
 
 	public boolean canPath(int x, int y) {
 		if (!(0 <= x && x < gm.widw / 50 && 0 <= y && y < gm.widh / 50)) {
@@ -35,6 +60,18 @@ public class pathfinder {
 
 	}
 
+	/**
+	 * find a path between demon and enemies, enemies will move approach to demon when in range.
+	 * 
+	 * @author zeyoup
+	 * @param x X coordinate of character
+	 * @param y Y coordinate of character
+	 * @param c 1 current cost for path per cell
+	 * @param e  except cost for path between characters
+	 * @param hl false
+	 * @param cost total cost for path movement
+	 */
+	
 	class queueEle {
 		public int x;
 		public int y;

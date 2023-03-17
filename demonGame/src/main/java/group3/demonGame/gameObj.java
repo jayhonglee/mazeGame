@@ -3,6 +3,17 @@ package group3.demonGame;
 import java.awt.Graphics2D;
 import java.awt.Image;
 
+/**
+ * Manage gameobject for the game. This method determine the coordinate and size for the game attributes. Then draw the attributes in the screen.
+ * 
+ * @author zeyoup
+ * @param x X coordinate of gameobj
+ * @param y Y coordinate of gameobj
+ * @param ig image of gameobj
+ * @param w width of gameobj image
+ * @param h height of gameobj image
+ * @param gm gamemanager
+ */
 public class gameObj {
     
 	public gameObj(int x, int y, Image ig, GameManager gm) {

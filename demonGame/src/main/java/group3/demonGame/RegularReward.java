@@ -1,7 +1,16 @@
 package group3.demonGame;
 
 import java.awt.Image;
-
+/**
+ * Create a gameobj regular reward with a defualt size(50w x 50h). When demon get it, points add 100.
+ * 
+ * @author zeyoup
+ * @param x X coordinate of regular reward
+ * @param y Y coordinate of regular reward
+ * @param ig image of regular reward
+ * @param gm gamemanager
+ *
+ */
 public class RegularReward extends gameObj{
 	private int points = 100;
         private Score score;
