@@ -5,11 +5,15 @@ import java.util.Comparator;
 import java.util.PriorityQueue;
 
 public class pathfinder {
-	public int[][] bitmap = new int[main.widh / 50][main.widw / 50];
+	GameManager gm;
+	public int bitmap[][]; 
+	
+	public pathfinder(GameManager manager) {
+		this.gm = manager;
+		bitmap = new int[gm.widh / 50][gm.widw / 50];
 
-	public pathfinder() {
-		for (int i = 0; i < main.widh / 50; i++) {
-			for (int j = 0; j < main.widw / 50; j++) {
+		for (int i = 0; i < gm.widh / 50; i++) {
+			for (int j = 0; j < gm.widw / 50; j++) {
 				bitmap[i][j] = 1;
 			}
 		}
@@ -21,7 +25,7 @@ public class pathfinder {
 	}
 
 	public boolean canPath(int x, int y) {
-		if (!(0 <= x && x < main.widw / 50 && 0 <= y && y < main.widh / 50)) {
+		if (!(0 <= x && x < gm.widw / 50 && 0 <= y && y < gm.widh / 50)) {
 			return false;
 		}
 		if (bitmap[y][x] % 10 == 2) {
@@ -70,16 +74,16 @@ public class pathfinder {
 	};
 
 	public boolean inRange(int x, int y) {
-		if (0 <= x && x < main.widw / 50 && 0 <= y && y < main.widh / 50)
+		if (0 <= x && x < gm.widw / 50 && 0 <= y && y < gm.widh / 50)
 			return true;
 		return false;
 	}
 
 	public ArrayList<queueEle> getPath(int x, int y) {
 		ArrayList<queueEle> path = new ArrayList<>();
-		queueEle[][] tempMap = new queueEle[main.widh / 50][main.widw / 50];
-		for (int i = 0; i < main.widh / 50; i++) {
-			for (int j = 0; j < main.widw / 50; j++) {
+		queueEle[][] tempMap = new queueEle[gm.widh / 50][gm.widw / 50];
+		for (int i = 0; i < gm.widh / 50; i++) {
+			for (int j = 0; j < gm.widw / 50; j++) {
 				tempMap[i][j] = new queueEle();
 				if (bitmap[i][j] % 10 == 2) {
 					tempMap[i][j].cost = 50;
@@ -87,8 +91,8 @@ public class pathfinder {
 			}
 		}
 		PriorityQueue<queueEle> q = new PriorityQueue<>(eleCmp);
-		int dx = main.dm.x / 50;
-		int dy = main.dm.y / 50;
+		int dx = gm.dm.x / 50;
+		int dy = gm.dm.y / 50;
 		int sx = x / 50;
 		int sy = y / 50;
 		q.add(new queueEle(sx, sy, 0, Math.abs(sx - dx) + Math.abs(sy - dy)));
@@ -127,7 +131,7 @@ public class pathfinder {
 				 */
 				break;
 			}
-			if (!(0 <= temp.x && temp.x < main.widw / 50 && 0 <= temp.y && temp.y < main.widh / 50)
+			if (!(0 <= temp.x && temp.x < gm.widw / 50 && 0 <= temp.y && temp.y < gm.widh / 50)
 					|| tempMap[temp.y][temp.x].hl) {
 				continue;
 			}

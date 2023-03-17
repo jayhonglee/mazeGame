@@ -2,7 +2,6 @@ package group3.demonGame;
 
 import java.awt.Image;
 
-import java.util.ArrayList;
 
 /*image resource from https://www.bing.com/images/search?view=detailV2&ccid=8ONaPRIK&id=9E904C9F463EEF473A7B9C95F3D877F5567EFDDC&thid=
  * OIP.8ONaPRIKofHQ3QxjHeCmyQAAAA&mediaurl=https%3A%2F%2Fimages-wixmp-ed30a86b8c4ca887773594c2.wixmp.com%
@@ -23,29 +22,80 @@ public class demon extends gameObj {
 	boolean left = false;
 	boolean right = false;
 
-	public demon(int x, int y, Image ig) {
-		super(x, y, ig);
-		main.pf.set(x / 50, y / 50, main.objList.size() - 1, 3);
+
+	public demon(int x, int y, Image ig, GameManager gm) {
+		super(x, y, ig, gm);
+		gm.pf.set(x / 50, y / 50, gm.objList.size() - 1, 3);
 	}
 
-	public demon(int x, int y, int w, int h, Image ig) {
-		super(x, y, w, h, ig);
-		main.pf.set(x / 50, y / 50, main.objList.size() - 1, 3);
+	public demon(int x, int y, int w, int h, Image ig, GameManager gm) {
+		super(x, y, w, h, ig, gm);
+		gm.pf.set(x / 50, y / 50, gm.objList.size() - 1, 3);
 	}
 
 	public void update() {
-		if (up && main.pf.canPath(x / 50, y / 50 - 1)) {
+		if (up && gm.pf.canPath(x / 50, y / 50 - 1)) {
 			y -= 50;
 		}
-		if (down && main.pf.canPath(x / 50, y / 50 + 1)) {
+		if (down && gm.pf.canPath(x / 50, y / 50 + 1)) {
 			y += 50;
 		}
-		if (left && main.pf.canPath(x / 50 - 1, y / 50)) {
+		if (left && gm.pf.canPath(x / 50 - 1, y / 50)) {
 			x -= 50;
 		}
-		if (right && main.pf.canPath(x / 50 + 1, y / 50)) {
+		if (right && gm.pf.canPath(x / 50 + 1, y / 50)) {
 			x += 50;
 		}
+		//collision
+		for (gameObj gameObj:gm.objList){
+			if (gameObj instanceof demon)
+				continue;
+
+			if (gameObj instanceof RegularReward){
+				if ((gameObj.x==this.x)&&(gameObj.y==this.y)){
+					RegularReward rR= (RegularReward) gameObj;
+					rR.getReward();
+					gm.objList.remove(gameObj);
+					break;
+				}
+			}else if (gameObj instanceof  BonusReward){
+				if ((gameObj.x==this.x)&&(gameObj.y==this.y)){
+					BonusReward bR= (BonusReward) gameObj;
+					bR.getReward();
+					gm.objList.remove(gameObj);
+					break;
+				}
+			}else if(gameObj instanceof enemies){
+				if ((gameObj.x==this.x)&&(gameObj.y==this.y)) {
+					gm.win = false;
+					gm.gameDone = true;
+				}
+			}else if (gameObj instanceof Trap){
+				if ((gameObj.x==this.x)&&(gameObj.y==this.y)) {
+					Trap tr = (Trap) gameObj;
+					tr.trapCatch();
+					gm.objList.remove(gameObj);
+					break;
+				}
+			}else if (gameObj instanceof door){
+				if ((gameObj.x==this.x)&&(gameObj.y==this.y)) {
+
+					boolean hasAllRegular=false;
+					for (gameObj gameObj1:gm.objList){
+						if (gameObj1 instanceof RegularReward){
+							hasAllRegular=true;
+							break;
+						}
+					}
+					if (!hasAllRegular){
+						gm.win = true;
+						gm.gameDone = true;
+					}
+				}
+			}
+		}
+
+	
 	}
 
 	public void move(int kc) {

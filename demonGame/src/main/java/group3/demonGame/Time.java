@@ -1,38 +1,48 @@
 package group3.demonGame;
 
+import java.awt.Color;
+import java.awt.Graphics2D;
+
+/**
+ * used to display time onto game screen
+ * @author myw11
+ *
+ */
 public class Time {
-	private long start;
-	private long currentTime;
-	
-	public Time() {
-		start = System.nanoTime();		
+	double playTime;
+	int minutes = 0;
+	GameManager gm;
+		
+	public Time(GameManager manager) {
+		this.gm = manager;
 	}
 
-	public long getStartTime() {
-		return start;
+	/**
+	 * display time on game screen (UI)
+	 * 
+	 */
+	public void draw(Graphics2D g) {
+		
+		// used to write words on display screen
+		g.setFont(gm.fontStyle);
+		g.setColor(Color.white);
+					
+		if(gm.gameDone) {
+			// display final score at game's end
+			String timeMSG = "TIME: " + minutes + ":" + gm.seconds;
+			g.drawString(timeMSG, 500, 200);
+			
+		} else {
+			
+			if(gm.seconds >= 60) {
+				minutes = (int)(gm.seconds/60);
+				gm.seconds = (gm.seconds)%60;
+			}
+			g.drawString(minutes + ":" + gm.seconds, 50, 50); // y indicates baseline of text!!
+			//System.out.println(minutes + ":" + gm.seconds);
+		}	
+		
 	}
-	public long getCurrentTime() {
-		return currentTime;
-	}
+	
 
-	public long elaspsedTime(long time) {
-		return time - start;
-	}
-	
-	public String stringTime(long time){
-		StringBuilder timeString = new StringBuilder();
-		int seconds = (int) Math.floor(time / 1000000000);
-		int minutes = (int) Math.floor(seconds / 60);
-		
-		timeString.append(minutes);
-		timeString.append(":");
-		timeString.append(seconds);
-		
-		return timeString.toString();
-		
-	}
-	
-//	public void pauseTime() {
-//		
-//	}
 }
