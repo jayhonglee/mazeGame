@@ -15,18 +15,18 @@ import javax.swing.JPanel;
 
 /**
  * GameManager manages all the game elements and brings them together
- * to run the game. 
+ * to run the game.
  * 
  * @author myw11
  *
  */
 public class GameManager extends JPanel implements Runnable {
 	/**
-	 * needed because JPanel is a serializable class. 
+	 * needed because JPanel is a serializable class.
 	 * number would differentiate it from other JPanel, etc. types.
 	 */
 	private static final long serialVersionUID = -4593365196307425464L;
-	
+
 	/**
 	 * screen settings
 	 */
@@ -34,45 +34,44 @@ public class GameManager extends JPanel implements Runnable {
 	public int widw = 1000; // width
 	public int widh = 800; // height
 	// Ui addition
-	//int uih = 100;
-	
+	// int uih = 100;
+
 	// collision
 	public pathfinder pf = new pathfinder(this);
-	
+
 	/**
 	 * game characters and map objects
 	 */
 	public ArrayList<gameObj> objList = new ArrayList<>();
-	//public gameObj bg;
-		// map items
+	// public gameObj bg;
+	// map items
 	public wall wall;
-//	Image d1im = Toolkit.getDefaultToolkit().getImage("src/image/door.png");
-//	public door door1 = new door(50, 50, d1im, this);	
+	// Image d1im = Toolkit.getDefaultToolkit().getImage("src/image/door.png");
+	// public door door1 = new door(50, 50, d1im, this);
 	Image d2im = Toolkit.getDefaultToolkit().getImage("src/image/door.png");
-	public door door2 = new door(900,50,d2im, this);
-		// main character
+	public door door2 = new door(900, 50, d2im, this);
+	// main character
 	Image dmim = Toolkit.getDefaultToolkit().getImage("src/image/demon.png");/* demon */
 	public demon dm = new demon(50, 50, dmim, this);
-		// moving enemies
+	// moving enemies
 	Image em1im = Toolkit.getDefaultToolkit().getImage("src/image/enemies.png");/* enemy1 */
 	public enemies em1 = new enemies(700, 700, em1im, this);
 	Image em2im = Toolkit.getDefaultToolkit().getImage("src/image/enemies.png");/* enemy2 */
 	public enemies em2 = new enemies(700, 450, em2im, this);
-		// regular reward
+	// regular reward
 	Image r1 = Toolkit.getDefaultToolkit().getImage("src/image/reward1.png");
 	RegularReward rw1 = new RegularReward(350, 350, r1, this);
 	RegularReward rw11 = new RegularReward(150, 150, r1, this);
 	RegularReward rw111 = new RegularReward(150, 550, r1, this);
-		// bonus reward
+	// bonus reward
 	Image r2 = Toolkit.getDefaultToolkit().getImage("src/image/reward2.png");
-	Random random=new Random();
-	int randIndex=random.nextInt(8)%8;
-		// trap
+	Random random = new Random();
+	int randIndex = random.nextInt(8) % 8;
+	// trap
 	Image tr = Toolkit.getDefaultToolkit().getImage("src/image/trap.png");
 	Trap trap1 = new Trap(450, 350, tr, this);
 	Trap trap2 = new Trap(700, 700, tr, this);
 	Trap trap3 = new Trap(150, 200, tr, this);
-		
 
 	/**
 	 * UI: time and score
@@ -84,22 +83,20 @@ public class GameManager extends JPanel implements Runnable {
 	int score = 0;
 	// font used to display time and score
 	Font fontStyle = new Font("Serif", Font.PLAIN, 24);
-	
-	
+
 	/**
 	 * variables used in to run the game / in the game loop
 	 */
 	boolean gameDone = false;
 	boolean win = false;
 	Thread game;
-	
-	//fps
-	private int FPS = 10;
-	private double updateWait = 1000000000/FPS;
-	private double accumulator = 0;
-	int frameCount =0;
 
-	
+	// fps
+	private int FPS = 10;
+	private double updateWait = 1000000000 / FPS;
+	private double accumulator = 0;
+	int frameCount = 0;
+
 	// constructor
 	public GameManager() {
 		// set screen size
@@ -116,24 +113,26 @@ public class GameManager extends JPanel implements Runnable {
 		}); /* control movement with "W A S D" */
 		this.setFocusable(true); // focus on user input
 	}
-	
-	
+
 	/**
-	 * updates the game elements (position of characters) 
+	 * updates the game elements (position of characters)
 	 */
 	public void update() {
-		//update position of characters
+		// update position of characters
 		for (int i = 0; i < objList.size(); i++) {
 			objList.get(i).update();
 		}
-		try {Thread.sleep(100);}
-		catch(Exception e) {e.printStackTrace();}
+		try {
+			Thread.sleep(100);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}/* refresh to keep game operate */
-	
+
 	/**
 	 * updates game visuals; called with repaint()
 	 * 
-	 * @param g 
+	 * @param g
 	 */
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
@@ -145,7 +144,7 @@ public class GameManager extends JPanel implements Runnable {
 		points.draw(g2);
 		g2.dispose();
 	} /* draw the game object */
-	
+
 	/**
 	 * start the game's thread
 	 */
@@ -153,9 +152,9 @@ public class GameManager extends JPanel implements Runnable {
 		game = new Thread(this);
 		game.start(); // automatically calls run() below
 	}
-	
+
 	@Override
-	public void run() {				
+	public void run() {
 		// load map
 		Image wallim = Toolkit.getDefaultToolkit().getImage("src/image/wall.png");
 		for (int i = 0; i < widw; i += 50) {
@@ -232,34 +231,26 @@ public class GameManager extends JPanel implements Runnable {
 		}
 		new wall(350, 550, wallim, this);
 		new wall(350, 600, wallim, this);
-		
+
 		// load rewards
-		if(randIndex==1  ){
-			new BonusReward(550,350, r2, this);
-		}
-		else if(randIndex==2) {
-			new BonusReward(800,500 , r2,this);
-		}
-		else if(randIndex==3) {
-			new BonusReward(550,400 , r2, this);
-		}
-		else if(randIndex==4) {
-			new BonusReward(100,500 , r2, this);
-		}
-		else if(randIndex==5) {
-			new BonusReward(700,150 , r2, this);
-		}
-		else if(randIndex==6) {
-			new BonusReward(600,50 , r2, this);
-		}
-		else if(randIndex==7) {
-			new BonusReward(550,50 , r2, this);
-		}
-		else if(randIndex==8) {
-			new BonusReward(450,900 , r2, this);
-		}
-		else {
-			new BonusReward(700,250 , r2, this);
+		if (randIndex == 1) {
+			new BonusReward(550, 350, r2, this);
+		} else if (randIndex == 2) {
+			new BonusReward(800, 500, r2, this);
+		} else if (randIndex == 3) {
+			new BonusReward(550, 400, r2, this);
+		} else if (randIndex == 4) {
+			new BonusReward(100, 500, r2, this);
+		} else if (randIndex == 5) {
+			new BonusReward(700, 150, r2, this);
+		} else if (randIndex == 6) {
+			new BonusReward(600, 50, r2, this);
+		} else if (randIndex == 7) {
+			new BonusReward(550, 50, r2, this);
+		} else if (randIndex == 8) {
+			new BonusReward(450, 900, r2, this);
+		} else {
+			new BonusReward(700, 250, r2, this);
 		}
 
 		// run game
@@ -267,31 +258,29 @@ public class GameManager extends JPanel implements Runnable {
 		long prevTime = System.nanoTime();
 		while (game != null) {
 			currentTime = System.nanoTime();
-			accumulator +=(currentTime - prevTime)/updateWait;
-			timer +=(currentTime - prevTime);
-			prevTime = currentTime;					
+			accumulator += (currentTime - prevTime) / updateWait;
+			timer += (currentTime - prevTime);
+			prevTime = currentTime;
 
-			
-			if(accumulator >= 1) { // control how often game updates
-				//update game elements and visuals
+			if (accumulator >= 1) { // control how often game updates
+				// update game elements and visuals
 				update();
 				repaint();
-	
-				accumulator=0;
-				//frameCount++;
-				if(timer >= 1000000000) {
-					//System.out.println("FPS: " + frameCount);
-					//frameCount = 0;
-					timer=0;
-					seconds+=1;
+
+				accumulator = 0;
+				// frameCount++;
+				if (timer >= 1000000000) {
+					// System.out.println("FPS: " + frameCount);
+					// frameCount = 0;
+					timer = 0;
+					seconds += 1;
 				}
 			}
-			if(gameDone) {
+			if (gameDone) {
 				game = null;
 			}
 		}
-		
-	} 
 
+	}
 
 }
