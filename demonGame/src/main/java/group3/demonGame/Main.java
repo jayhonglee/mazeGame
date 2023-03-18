@@ -1,4 +1,5 @@
 package group3.demonGame;
+
 /**
  * Main method for the game, run the game from this method.
  * 
