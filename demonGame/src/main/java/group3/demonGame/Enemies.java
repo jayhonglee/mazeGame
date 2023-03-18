@@ -54,7 +54,7 @@ public class Enemies extends GameObj {
 		queueEle ele=path.remove(path.size()-1);
 		x=ele.x*50;
 		y=ele.y*50;
-		System.out.println(path.size());
+		//System.out.println(path.size());
 		return;
 
 
