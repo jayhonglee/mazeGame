@@ -22,12 +22,12 @@ import java.awt.Image;
  * @param gm gamemanager
  */
 
-public class door extends gameObj{
+public class Door extends GameObj{
 
-	public door(int x, int y, Image ig, GameManager gm) {
+	public Door(int x, int y, Image ig, GameManager gm) {
 		super(x, y, ig, gm);
 	}
-	public door(int x,int y, int w, int h, Image ig, GameManager gm) {
+	public Door(int x,int y, int w, int h, Image ig, GameManager gm) {
 		super(x, y, w, h, ig, gm);
 		}
 	

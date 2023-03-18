@@ -14,9 +14,9 @@ import java.awt.Image;
  * @param h height of gameobj image
  * @param gm gamemanager
  */
-public class gameObj {
+public class GameObj {
     
-	public gameObj(int x, int y, Image ig, GameManager gm) {
+	public GameObj(int x, int y, Image ig, GameManager gm) {
 		this.gm = gm;
 		this.x = x;
 		this.y = y;
@@ -26,7 +26,7 @@ public class gameObj {
 		gm.objList.add(this);
 	}
 
-	public gameObj(int x, int y, int w, int h, Image ig, GameManager gm) {
+	public GameObj(int x, int y, int w, int h, Image ig, GameManager gm) {
 		this.gm = gm;
 		this.x = x;
 		this.y = y;

@@ -10,14 +10,14 @@ import java.util.PriorityQueue;
  * @author zeyoup
  *
  */
-public class pathfinder {
+public class Pathfinder {
 	/**
 	 * Create a bitmap for game map. It can find the coordinate or path for gameObj easily. Set 1 in each cell in bitmap.
 	 */
 	GameManager gm;
 	public int bitmap[][]; 
 	
-	public pathfinder(GameManager manager) {
+	public Pathfinder(GameManager manager) {
 		this.gm = manager;
 		bitmap = new int[gm.widh / 50][gm.widw / 50];
 

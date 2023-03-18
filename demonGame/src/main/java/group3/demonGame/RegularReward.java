@@ -11,7 +11,7 @@ import java.awt.Image;
  * @param gm gamemanager
  *
  */
-public class RegularReward extends gameObj{
+public class RegularReward extends GameObj{
 	private int points = 100;
         private Score score;
 	
