@@ -33,7 +33,7 @@ public class BonusReward extends GameObj{
                     count++;
                     try {
                         Thread.sleep(1000);
-                        System.out.println(count);
+                        //System.out.println(count);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }

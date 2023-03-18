@@ -128,6 +128,7 @@ public class MenuFrame extends javax.swing.JFrame {
     private void quitButtonActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_quitButtonActionPerformed
         // close menu frame
         dispose();
+        System.exit(0);
     }// GEN-LAST:event_quitButtonActionPerformed
 
     private void startButtonActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_startButtonActionPerformed
