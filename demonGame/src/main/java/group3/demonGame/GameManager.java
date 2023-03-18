@@ -51,30 +51,31 @@ public class GameManager extends JPanel implements Runnable {
 	// public gameObj bg;
 	// map items
 	public wall wall;
-	// Image d1im = Toolkit.getDefaultToolkit().getImage("src/image/door.png");
+	// Image d1im =
+	// Toolkit.getDefaultToolkit().getImage("demonGame/src/image/door.png");
 	// public door door1 = new door(50, 50, d1im, this);
-	Image d2im = Toolkit.getDefaultToolkit().getImage("src/image/door.png");
+	Image d2im = Toolkit.getDefaultToolkit().getImage("demonGame/src/image/door.png");
 	public door door2 = new door(900, 50, d2im, this);
 	// main character
-	Image dmim = Toolkit.getDefaultToolkit().getImage("src/image/demon.png");/* demon */
+	Image dmim = Toolkit.getDefaultToolkit().getImage("demonGame/src/image/demon.png");/* demon */
 	public demon dm = new demon(50, 50, dmim, this);
 	// moving enemies
-	Image em1im = Toolkit.getDefaultToolkit().getImage("src/image/enemies.png");/* enemy1 */
+	Image em1im = Toolkit.getDefaultToolkit().getImage("demonGame/src/image/enemies.png");/* enemy1 */
 	public enemies em1 = new enemies(700, 700, em1im, this);
-	Image em2im = Toolkit.getDefaultToolkit().getImage("src/image/enemies.png");/* enemy2 */
+	Image em2im = Toolkit.getDefaultToolkit().getImage("demonGame/src/image/enemies.png");/* enemy2 */
 	public enemies em2 = new enemies(700, 450, em2im, this);
 	// regular reward
-	Image r1 = Toolkit.getDefaultToolkit().getImage("src/image/reward1.png");
+	Image r1 = Toolkit.getDefaultToolkit().getImage("demonGame/src/image/reward1.png");
 	RegularReward rw1 = new RegularReward(350, 350, r1, this, score);
 	RegularReward rw11 = new RegularReward(150, 150, r1, this, score);
 	RegularReward rw111 = new RegularReward(150, 550, r1, this, score);
 	// bonus reward
-	Image r2 = Toolkit.getDefaultToolkit().getImage("src/image/reward2.png");
+	Image r2 = Toolkit.getDefaultToolkit().getImage("demonGame/src/image/reward2.png");
 	Random random = new Random();
 	int randIndex = random.nextInt(8) % 8;
 
 	// trap
-	Image tr = Toolkit.getDefaultToolkit().getImage("src/image/trap.png");
+	Image tr = Toolkit.getDefaultToolkit().getImage("demonGame/src/image/trap.png");
 	Trap trap1 = new Trap(450, 350, tr, this, score);
 	Trap trap2 = new Trap(700, 700, tr, this, score);
 	Trap trap3 = new Trap(150, 200, tr, this, score);
@@ -167,7 +168,7 @@ public class GameManager extends JPanel implements Runnable {
 		gameFrame.setLocationRelativeTo(null);
 
 		// load map
-		Image wallim = Toolkit.getDefaultToolkit().getImage("src/image/wall.png");
+		Image wallim = Toolkit.getDefaultToolkit().getImage("demonGame/src/image/wall.png");
 		for (int i = 0; i < widw; i += 50) {
 			new wall(i, 0, wallim, this);
 			new wall(i, widh - 50, wallim, this);
