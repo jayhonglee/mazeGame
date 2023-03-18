@@ -137,6 +137,9 @@
     </Component>
     <Component class="javax.swing.JLabel" name="backgroundImage">
       <Properties>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="2" name="D:\SFU\SFU 2023 Spring\CMPT 276\276-assignments\276 group project\delete\276project\demonGame\src\image\menuFrameBackground.jpg"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="jLabel1"/>
       </Properties>
     </Component>
