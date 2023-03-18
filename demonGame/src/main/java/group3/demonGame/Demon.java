@@ -19,7 +19,7 @@ import java.awt.Image;
  * @author zeyoup
  */
 
-public class demon extends gameObj {
+public class Demon extends GameObj {
 	boolean up = false;
 	boolean down = false;
 	boolean left = false;
@@ -36,12 +36,12 @@ public class demon extends gameObj {
 	 * @param gm GameManager
 	 */
 	
-	public demon(int x, int y, Image ig, GameManager gm) {
+	public Demon(int x, int y, Image ig, GameManager gm) {
 		super(x, y, ig, gm);
 		gm.pf.set(x / 50, y / 50, gm.objList.size() - 1, 3);
 	}
 
-	public demon(int x, int y, int w, int h, Image ig, GameManager gm) {
+	public Demon(int x, int y, int w, int h, Image ig, GameManager gm) {
 		super(x, y, w, h, ig, gm);
 		gm.pf.set(x / 50, y / 50, gm.objList.size() - 1, 3);
 	}
@@ -70,8 +70,8 @@ public class demon extends gameObj {
 			x += 50;
 		}
 		//collision
-		for (gameObj gameObj:gm.objList){
-			if (gameObj instanceof demon)
+		for (GameObj gameObj:gm.objList){
+			if (gameObj instanceof Demon)
 				continue;
 
 			if (gameObj instanceof RegularReward){
@@ -88,7 +88,7 @@ public class demon extends gameObj {
 					gm.objList.remove(gameObj);
 					break;
 				}
-			}else if(gameObj instanceof enemies){
+			}else if(gameObj instanceof Enemies){
 				if ((gameObj.x==this.x)&&(gameObj.y==this.y)) {
 					gm.win = false;
 					gm.gameDone = true;
@@ -100,11 +100,11 @@ public class demon extends gameObj {
 					gm.objList.remove(gameObj);
 					break;
 				}
-			}else if (gameObj instanceof door){
+			}else if (gameObj instanceof Door){
 				if ((gameObj.x==this.x)&&(gameObj.y==this.y)) {
 
 					boolean hasAllRegular=false;
-					for (gameObj gameObj1:gm.objList){
+					for (GameObj gameObj1:gm.objList){
 						if (gameObj1 instanceof RegularReward){
 							hasAllRegular=true;
 							break;

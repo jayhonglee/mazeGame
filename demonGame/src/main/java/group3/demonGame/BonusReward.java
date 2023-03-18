@@ -7,7 +7,7 @@ import java.awt.Image;
  * @author zeyoup
  * 
  */
-public class BonusReward extends gameObj{
+public class BonusReward extends GameObj{
     private int points = 200;
     private int count=0;
     private Score score;

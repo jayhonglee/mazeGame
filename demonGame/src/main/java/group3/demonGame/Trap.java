@@ -13,7 +13,7 @@ import java.awt.*;
 
 
 
-public class Trap extends gameObj {
+public class Trap extends GameObj {
         private Score score;
 	private int points  = -110;
 

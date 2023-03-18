@@ -14,15 +14,15 @@ import java.awt.Image;
  * @param gm gamemanager
  */
 
-public class wall extends gameObj {
+public class Wall extends GameObj {
 
-	public wall(int x, int y, Image ig, GameManager gm) {
+	public Wall(int x, int y, Image ig, GameManager gm) {
 		super(x, y, ig, gm);
 		// TODO Auto-generated constructor stub
 		gm.pf.set(x / 50, y / 50, gm.objList.size() - 1, 2);
 	}
 
-	public wall(int x, int y, int w, int h, Image ig, GameManager gm) {
+	public Wall(int x, int y, int w, int h, Image ig, GameManager gm) {
 		super(x, y, w, h, ig, gm);
 		// TODO Auto-generated constructor stub
 		gm.pf.set(x, y, gm.objList.size() - 1, 2);

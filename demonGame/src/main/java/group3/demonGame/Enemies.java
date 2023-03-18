@@ -5,7 +5,7 @@ import java.time.Duration;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
-import group3.demonGame.pathfinder.queueEle;
+import group3.demonGame.Pathfinder.queueEle;
 
 /**https://www.bing.com/images/search?view=detailV2&ccid=jtoGsakR&id=
  * A11F28D8DA8BC9F101B9D6FA586E6189DB1ADEB3&thid=OIP.jtoGsakRDme07JpRgcK8ewAAAA&mediaurl=
@@ -27,18 +27,18 @@ nsightsToken%3Dccid_f2HdSPK1*cp_6072C87D5C2F6E0D876C7EBA71493478*mid_784BC1A715B
 *@param gm gamemanager
 */
 
-public class enemies extends gameObj {
+public class Enemies extends GameObj {
 	int waitRound = 0;
 	int test = 0;
 	ArrayList<queueEle> path = null;
 	LocalDate nextAct;
 
-	public enemies(int x, int y, Image ig, GameManager gm) {
+	public Enemies(int x, int y, Image ig, GameManager gm) {
 		super(x, y, ig, gm);
 		nextAct = LocalDate.now().plus(Duration.ofSeconds((long) 0.5));
 	}
 
-	public enemies(int x, int y, int w, int h, Image ig, GameManager gm) {
+	public Enemies(int x, int y, int w, int h, Image ig, GameManager gm) {
 		super(x, y, w, h, ig, gm);
 	}
 
