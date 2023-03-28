@@ -1,5 +1,7 @@
 package group3.demonGame;
 
+import group3.demonGame.Frames.EndFrame;
+
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
@@ -55,7 +57,7 @@ public class GameManager extends JPanel implements Runnable {
 	public Pathfinder pf = new Pathfinder(this);
 	// array to hold all game objects
 	public ArrayList<GameObj> objList = new ArrayList<>();
-	//maze
+	// maze
 	public Maze maze1 = new Maze(this);
 	// map items (wall and door)
 	public Wall wall;
@@ -161,10 +163,10 @@ public class GameManager extends JPanel implements Runnable {
 		// center the gameFrame
 		JFrame gameFrame = (JFrame) SwingUtilities.getWindowAncestor(this);
 		gameFrame.setLocationRelativeTo(null);
-		
+
 		// load maze
 		maze1.createMaze1();
-		
+
 		// load bonus reward (appears in new place every game)
 		if (randIndex == 1) {
 			new BonusReward(550, 350, r2, this, score);

@@ -3,8 +3,6 @@ package group3.demonGame;
 import java.awt.Image;
 import java.awt.Toolkit;
 
-import group3.demonGame.Objects.Wall;
-
 /**
  * creates a Maze using the Wall class
  * 

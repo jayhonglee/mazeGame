@@ -1,9 +1,6 @@
-package group3.demonGame.Objects;
+package group3.demonGame;
 
 import java.awt.Image;
-
-import group3.demonGame.GameManager;
-import group3.demonGame.GameObj;
 
 /**
  * image resource from

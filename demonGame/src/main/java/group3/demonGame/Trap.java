@@ -1,9 +1,6 @@
-package group3.demonGame.Objects;
+package group3.demonGame;
 
 import java.awt.*;
-
-import group3.demonGame.GameManager;
-import group3.demonGame.GameObj;
 
 /**
  * create gameobj traps with a default size(50w x 50 h). When demon get traps,

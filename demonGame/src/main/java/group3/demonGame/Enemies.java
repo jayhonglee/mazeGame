@@ -1,13 +1,11 @@
-package group3.demonGame.Objects;
+package group3.demonGame;
 
 import java.awt.Image;
 import java.time.Duration;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
-import group3.demonGame.GameManager;
-import group3.demonGame.GameObj;
-import group3.demonGame.Utility.Pathfinder.queueEle;
+import group3.demonGame.Pathfinder.queueEle;
 
 /**
  * https://www.bing.com/images/search?view=detailV2&ccid=jtoGsakR&id=

@@ -1,10 +1,8 @@
-package group3.demonGame.Utility;
+package group3.demonGame;
 
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.PriorityQueue;
-
-import group3.demonGame.GameManager;
 
 /**
  * 

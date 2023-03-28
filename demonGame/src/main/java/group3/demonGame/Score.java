@@ -1,8 +1,6 @@
-package group3.demonGame.Objects;
+package group3.demonGame;
 
 import java.awt.Graphics2D;
-
-import group3.demonGame.GameManager;
 
 /**
  * 
