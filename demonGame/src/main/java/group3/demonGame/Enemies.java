@@ -16,7 +16,7 @@ import group3.demonGame.Pathfinder.queueEle;
 nsightsToken%3Dccid_f2HdSPK1*cp_6072C87D5C2F6E0D876C7EBA71493478*mid_784BC1A715BC01A44A971C2828C1AE8E2BA5ECDB
 *simid_607993809944126315*thid_OIP.f2HdSPK1Z-IhRhGmCyERHQHaGQ&ajaxhist=0&ajaxserp=0
 *<p>
-*create a gameObj enemies that can move,they would follow the demon from a path. The enemies size is default by 50 W X 50 H.
+*create a gameObj enemies that can move,they would follow the demon from a path. The enemies size is default by gm.squareSize W X gm.squareSize H.
 *
 *@author zeyoup
 *@param x X coordinate of enemies
@@ -52,8 +52,8 @@ public class Enemies extends GameObj {
 		}
 		path = gm.pf.getPath(x, y);
 		queueEle ele=path.remove(path.size()-1);
-		x=ele.x*50;
-		y=ele.y*50;
+		x=ele.x*gm.squareSize;
+		y=ele.y*gm.squareSize;
 		//System.out.println(path.size());
 		return;
 

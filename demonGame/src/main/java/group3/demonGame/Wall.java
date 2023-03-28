@@ -3,7 +3,7 @@ package group3.demonGame;
 import java.awt.Image;
 
 /**
- * Create a gameobj wall by a default image size 50W X 50H. Set a number 2 in the cell contain a wall  
+ * Create a gameobj wall by a default image size gm.squareSizeW X gm.squareSizeH. Set a number 2 in the cell contain a wall  
  * 
  * @author zeyoup
  * @param x X coordiante of wall
@@ -19,7 +19,7 @@ public class Wall extends GameObj {
 	public Wall(int x, int y, Image ig, GameManager gm) {
 		super(x, y, ig, gm);
 		// TODO Auto-generated constructor stub
-		gm.pf.set(x / 50, y / 50, gm.objList.size() - 1, 2);
+		gm.pf.set(x / gm.squareSize, y / gm.squareSize, gm.objList.size() - 1, 2);
 	}
 
 	public Wall(int x, int y, int w, int h, Image ig, GameManager gm) {

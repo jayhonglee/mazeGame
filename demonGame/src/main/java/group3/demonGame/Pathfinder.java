@@ -20,10 +20,10 @@ public class Pathfinder {
 
 	public Pathfinder(GameManager manager) {
 		this.gm = manager;
-		bitmap = new int[gm.windowHeight / 50][gm.windowWidth / 50];
+		bitmap = new int[gm.windowHeight / gm.squareSize][gm.windowWidth / gm.squareSize];
 
-		for (int i = 0; i < gm.windowHeight / 50; i++) {
-			for (int j = 0; j < gm.windowWidth / 50; j++) {
+		for (int i = 0; i < gm.windowHeight / gm.squareSize; i++) {
+			for (int j = 0; j < gm.windowWidth / gm.squareSize; j++) {
 				bitmap[i][j] = 1;
 			}
 		}
@@ -53,7 +53,7 @@ public class Pathfinder {
 	 */
 
 	public boolean canPath(int x, int y) {
-		if (!(0 <= x && x < gm.windowWidth / 50 && 0 <= y && y < gm.windowHeight / 50)) {
+		if (!(0 <= x && x < gm.windowWidth / gm.squareSize && 0 <= y && y < gm.windowHeight / gm.squareSize)) {
 			return false;
 		}
 		if (bitmap[y][x] % 10 == 2) {
@@ -109,27 +109,27 @@ public class Pathfinder {
 	};
 
 	public boolean inRange(int x, int y) {
-		if (0 <= x && x < gm.windowWidth / 50 && 0 <= y && y < gm.windowHeight / 50)
+		if (0 <= x && x < gm.windowWidth / gm.squareSize && 0 <= y && y < gm.windowHeight / gm.squareSize)
 			return true;
 		return false;
 	}
 
 	public ArrayList<queueEle> getPath(int x, int y) {
 		ArrayList<queueEle> path = new ArrayList<>();
-		queueEle[][] tempMap = new queueEle[gm.windowHeight / 50][gm.windowWidth / 50];
-		for (int i = 0; i < gm.windowHeight / 50; i++) {
-			for (int j = 0; j < gm.windowWidth / 50; j++) {
+		queueEle[][] tempMap = new queueEle[gm.windowHeight / gm.squareSize][gm.windowWidth / gm.squareSize];
+		for (int i = 0; i < gm.windowHeight / gm.squareSize; i++) {
+			for (int j = 0; j < gm.windowWidth / gm.squareSize; j++) {
 				tempMap[i][j] = new queueEle();
 				if (bitmap[i][j] % 10 == 2) {
-					tempMap[i][j].cost = 50;
+					tempMap[i][j].cost = gm.squareSize;
 				}
 			}
 		}
 		PriorityQueue<queueEle> q = new PriorityQueue<>(eleCmp);
-		int dx = gm.dm.x / 50;
-		int dy = gm.dm.y / 50;
-		int sx = x / 50;
-		int sy = y / 50;
+		int dx = gm.dm.x / gm.squareSize;
+		int dy = gm.dm.y / gm.squareSize;
+		int sx = x / gm.squareSize;
+		int sy = y / gm.squareSize;
 		q.add(new queueEle(sx, sy, 0, Math.abs(sx - dx) + Math.abs(sy - dy)));
 		while (!q.isEmpty()) {
 			queueEle temp = q.poll();
@@ -157,7 +157,7 @@ public class Pathfinder {
 				// System.out.println(path.get(i).x + "\t" + path.get(i).y);
 				// }
 				/*
-				 * for(int i=0;i<main.windowHeight/50;i++) {
+				 * for(int i=0;i<main.windowHeight/gm.squareSize;i++) {
 				 * for(int j=0;j<main.windowWidth510;j++) {
 				 * //System.out.print(tempMap[i][j].c+tempMap[i][j].e);
 				 * System.out.print(tempMap[i][j].c);
@@ -168,7 +168,7 @@ public class Pathfinder {
 				 */
 				break;
 			}
-			if (!(0 <= temp.x && temp.x < gm.windowWidth / 50 && 0 <= temp.y && temp.y < gm.windowHeight / 50)
+			if (!(0 <= temp.x && temp.x < gm.windowWidth / gm.squareSize && 0 <= temp.y && temp.y < gm.windowHeight / gm.squareSize)
 					|| tempMap[temp.y][temp.x].hl) {
 				continue;
 			}
