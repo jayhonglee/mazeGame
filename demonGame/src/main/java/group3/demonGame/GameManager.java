@@ -98,7 +98,7 @@ public class GameManager extends JPanel implements Runnable {
 	 */
 	public GameManager() {
 		// set screen size
-		this.setPreferredSize(new Dimension(widw, widh));
+		this.setPreferredSize(new Dimension(windowWidth, windowHeight));
 		// handle user keyboard input -> control movement with "W A S D"
 		this.addKeyListener(new KeyAdapter() {
 			public void keyPressed(KeyEvent e) {
@@ -161,13 +161,13 @@ public class GameManager extends JPanel implements Runnable {
 
 		// load map
 		Image wallim = Toolkit.getDefaultToolkit().getImage("src/image/wall.png");
-		for (int i = 0; i < widw; i += 50) {
+		for (int i = 0; i < windowWidth; i += 50) {
 			new Wall(i, 0, wallim, this);
-			new Wall(i, widh - 50, wallim, this);
+			new Wall(i, windowHeight - 50, wallim, this);
 		}
-		for (int i = 50; i < widh; i += 50) {
+		for (int i = 50; i < windowHeight; i += 50) {
 			new Wall(0, i, wallim, this);
-			new Wall(widw - 50, i, wallim, this);
+			new Wall(windowWidth - 50, i, wallim, this);
 		}
 		for (int i = 50; i < 350; i += 50) {
 			new Wall(100, i, wallim, this);

@@ -12,37 +12,40 @@ import java.util.PriorityQueue;
  */
 public class Pathfinder {
 	/**
-	 * Create a bitmap for game map. It can find the coordinate or path for gameObj easily. Set 1 in each cell in bitmap.
+	 * Create a bitmap for game map. It can find the coordinate or path for gameObj
+	 * easily. Set 1 in each cell in bitmap.
 	 */
 	GameManager gm;
-	public int bitmap[][]; 
-	
+	public int bitmap[][];
+
 	public Pathfinder(GameManager manager) {
 		this.gm = manager;
-		bitmap = new int[gm.widh / 50][gm.widw / 50];
+		bitmap = new int[gm.windowHeight / 50][gm.windowWidth / 50];
 
-		for (int i = 0; i < gm.widh / 50; i++) {
-			for (int j = 0; j < gm.widw / 50; j++) {
+		for (int i = 0; i < gm.windowHeight / 50; i++) {
+			for (int j = 0; j < gm.windowWidth / 50; j++) {
 				bitmap[i][j] = 1;
 			}
 		}
 	}
+
 	/**
 	 * set flag for gameobj to judge collision easily.
 	 * 
-	 * @param x X coordinate of gameobj
-	 * @param y Y coordinate of gameobj
+	 * @param x   X coordinate of gameobj
+	 * @param y   Y coordinate of gameobj
 	 * @param loc which gameobj from arraylist
-	 * @param hd a flag to judge collision
+	 * @param hd  a flag to judge collision
 	 */
-	
+
 	public void set(int x, int y, int loc, int hd) {
 		bitmap[y][x] = hd;
 
 	}
-	
+
 	/**
-	 * The method create a condition for path. If a cell contain 2, you cannot path the cell. Only path one cell for appropriate cell size
+	 * The method create a condition for path. If a cell contain 2, you cannot path
+	 * the cell. Only path one cell for appropriate cell size
 	 * 
 	 * @param X coordinate of gameobj
 	 * @param y Y coordinate of gameobj
@@ -50,7 +53,7 @@ public class Pathfinder {
 	 */
 
 	public boolean canPath(int x, int y) {
-		if (!(0 <= x && x < gm.widw / 50 && 0 <= y && y < gm.widh / 50)) {
+		if (!(0 <= x && x < gm.windowWidth / 50 && 0 <= y && y < gm.windowHeight / 50)) {
 			return false;
 		}
 		if (bitmap[y][x] % 10 == 2) {
@@ -61,17 +64,18 @@ public class Pathfinder {
 	}
 
 	/**
-	 * find a path between demon and enemies, enemies will move approach to demon when in range.
+	 * find a path between demon and enemies, enemies will move approach to demon
+	 * when in range.
 	 * 
 	 * @author zeyoup
-	 * @param x X coordinate of character
-	 * @param y Y coordinate of character
-	 * @param c 1 current cost for path per cell
-	 * @param e  except cost for path between characters
-	 * @param hl false
+	 * @param x    X coordinate of character
+	 * @param y    Y coordinate of character
+	 * @param c    1 current cost for path per cell
+	 * @param e    except cost for path between characters
+	 * @param hl   false
 	 * @param cost total cost for path movement
 	 */
-	
+
 	class queueEle {
 		public int x;
 		public int y;
@@ -105,16 +109,16 @@ public class Pathfinder {
 	};
 
 	public boolean inRange(int x, int y) {
-		if (0 <= x && x < gm.widw / 50 && 0 <= y && y < gm.widh / 50)
+		if (0 <= x && x < gm.windowWidth / 50 && 0 <= y && y < gm.windowHeight / 50)
 			return true;
 		return false;
 	}
 
 	public ArrayList<queueEle> getPath(int x, int y) {
 		ArrayList<queueEle> path = new ArrayList<>();
-		queueEle[][] tempMap = new queueEle[gm.widh / 50][gm.widw / 50];
-		for (int i = 0; i < gm.widh / 50; i++) {
-			for (int j = 0; j < gm.widw / 50; j++) {
+		queueEle[][] tempMap = new queueEle[gm.windowHeight / 50][gm.windowWidth / 50];
+		for (int i = 0; i < gm.windowHeight / 50; i++) {
+			for (int j = 0; j < gm.windowWidth / 50; j++) {
 				tempMap[i][j] = new queueEle();
 				if (bitmap[i][j] % 10 == 2) {
 					tempMap[i][j].cost = 50;
@@ -136,27 +140,24 @@ public class Pathfinder {
 				tempMap[temp.y][temp.x].hl = true;
 				for (int i = 0; i < total; i++) {
 					path.add(temp);
-					if(inRange(temp.x+1,temp.y) && tempMap[temp.y][temp.x+1].c==total-i-1) {
-						temp=tempMap[temp.y][temp.x+1];
-					}
-					else if(inRange(temp.x-1,temp.y) && tempMap[temp.y][temp.x-1].c==total-i-1) {
-						temp=tempMap[temp.y][temp.x-1];
-					}
-					else if(inRange(temp.x,temp.y+1) && tempMap[temp.y+1][temp.x].c==total-i-1) {
-						temp=tempMap[temp.y+1][temp.x];
-					}
-					else if(inRange(temp.x,temp.y-1) && tempMap[temp.y-1][temp.x].c==total-i-1) {
-						temp=tempMap[temp.y-1][temp.x];
+					if (inRange(temp.x + 1, temp.y) && tempMap[temp.y][temp.x + 1].c == total - i - 1) {
+						temp = tempMap[temp.y][temp.x + 1];
+					} else if (inRange(temp.x - 1, temp.y) && tempMap[temp.y][temp.x - 1].c == total - i - 1) {
+						temp = tempMap[temp.y][temp.x - 1];
+					} else if (inRange(temp.x, temp.y + 1) && tempMap[temp.y + 1][temp.x].c == total - i - 1) {
+						temp = tempMap[temp.y + 1][temp.x];
+					} else if (inRange(temp.x, temp.y - 1) && tempMap[temp.y - 1][temp.x].c == total - i - 1) {
+						temp = tempMap[temp.y - 1][temp.x];
 					}
 
 				}
 
-//				for (int i = 0; i < path.size(); i++) {
-//					System.out.println(path.get(i).x + "\t" + path.get(i).y);
-//				}
+				// for (int i = 0; i < path.size(); i++) {
+				// System.out.println(path.get(i).x + "\t" + path.get(i).y);
+				// }
 				/*
-				 * for(int i=0;i<main.widh/50;i++) {
-				 * for(int j=0;j<main.widw510;j++) {
+				 * for(int i=0;i<main.windowHeight/50;i++) {
+				 * for(int j=0;j<main.windowWidth510;j++) {
 				 * //System.out.print(tempMap[i][j].c+tempMap[i][j].e);
 				 * System.out.print(tempMap[i][j].c);
 				 * System.out.print("\t");
@@ -166,7 +167,7 @@ public class Pathfinder {
 				 */
 				break;
 			}
-			if (!(0 <= temp.x && temp.x < gm.widw / 50 && 0 <= temp.y && temp.y < gm.widh / 50)
+			if (!(0 <= temp.x && temp.x < gm.windowWidth / 50 && 0 <= temp.y && temp.y < gm.windowHeight / 50)
 					|| tempMap[temp.y][temp.x].hl) {
 				continue;
 			}
