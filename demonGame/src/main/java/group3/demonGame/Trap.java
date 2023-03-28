@@ -29,10 +29,6 @@ public class Trap extends GameObj {
 //      	this.gm.win = false;
 //      	gm.gameDone = true;
 //      }
-        if(score.getScore()<0) {
-            this.gm.win = false;
-            gm.gameDone = true;
-        }
     }
 }
 
