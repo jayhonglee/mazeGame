@@ -35,6 +35,10 @@ public class Score {
 	 */
 	public void increaseScore(int value) {
 		score += value;
+		if (score < 0) {
+			this.gm.win = false;
+			gm.gameDone = true;
+		}
 	}
 
 	/**
@@ -42,13 +46,6 @@ public class Score {
 	 * 
 	 * @param the value desired to decrease the score by
 	 */
-	public void decreaseScore(int value) {
-		score -= value;
-		if (score < 0) {
-			this.gm.win = false;
-			gm.gameDone = true;
-		}
-	}
 
 	/**
 	 * display the score on game screen (UI)
