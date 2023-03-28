@@ -54,6 +54,8 @@ public class GameManager extends JPanel implements Runnable {
 	public Pathfinder pf = new Pathfinder(this);
 	// array to hold all game objects
 	public ArrayList<GameObj> objList = new ArrayList<>();
+	//maze
+	public Maze maze1 = new Maze(this);
 	// map items (wall and door)
 	public Wall wall;
 	Image d2im = Toolkit.getDefaultToolkit().getImage("src/image/door.png");
@@ -158,84 +160,10 @@ public class GameManager extends JPanel implements Runnable {
 		// center the gameFrame
 		JFrame gameFrame = (JFrame) SwingUtilities.getWindowAncestor(this);
 		gameFrame.setLocationRelativeTo(null);
-
-		// load map
-		Image wallim = Toolkit.getDefaultToolkit().getImage("src/image/wall.png");
-		for (int i = 0; i < windowWidth; i += 50) {
-			new Wall(i, 0, wallim, this);
-			new Wall(i, windowHeight - 50, wallim, this);
-		}
-		for (int i = 50; i < windowHeight; i += 50) {
-			new Wall(0, i, wallim, this);
-			new Wall(windowWidth - 50, i, wallim, this);
-		}
-		for (int i = 50; i < 350; i += 50) {
-			new Wall(100, i, wallim, this);
-		}
-		for (int i = 50; i < 350; i += 50) {
-			new Wall(850, i, wallim, this);
-		}
-		for (int i = 100; i < 350; i += 50) {
-			new Wall(750, i, wallim, this);
-		}
-		for (int i = 100; i < 350; i += 50) {
-			new Wall(650, i, wallim, this);
-		}
-		for (int i = 100; i < 250; i += 50) {
-			new Wall(550, i, wallim, this);
-		}
-		for (int i = 100; i < 250; i += 50) {
-			new Wall(200, i, wallim, this);
-		}
-		for (int i = 200; i < 350; i += 50) {
-			new Wall(350, i, wallim, this);
-		}
-		for (int i = 150; i < 400; i += 50) {
-			new Wall(i, 300, wallim, this);
-		}
-		for (int i = 200; i < 550; i += 50) {
-			new Wall(i, 100, wallim, this);
-		}
-		for (int i = 400; i < 500; i += 50) {
-			new Wall(i, 300, wallim, this);
-		}
-		for (int i = 550; i < 650; i += 50) {
-			new Wall(i, 300, wallim, this);
-		}
-		new Wall(700, 100, wallim, this);
-		for (int i = 100; i < 900; i += 50) {
-			new Wall(i, 450, wallim, this);
-		}
-		for (int i = 550; i < 700; i += 50) {
-			new Wall(100, i, wallim, this);
-		}
-		for (int i = 450; i < 600; i += 50) {
-			new Wall(250, i, wallim, this);
-		}
-		for (int i = 550; i < 700; i += 50) {
-			new Wall(850, i, wallim, this);
-		}
-		for (int i = 500; i < 600; i += 50) {
-			new Wall(550, i, wallim, this);
-		}
-		for (int i = 550; i < 650; i += 50) {
-			new Wall(650, i, wallim, this);
-		}
-		for (int i = 550; i < 700; i += 50) {
-			new Wall(450, i, wallim, this);
-		}
-		for (int i = 500; i < 850; i += 50) {
-			new Wall(i, 650, wallim, this);
-		}
-		for (int i = 150; i < 400; i += 50) {
-			new Wall(i, 650, wallim, this);
-		}
-		for (int i = 750; i < 850; i += 50) {
-			new Wall(i, 550, wallim, this);
-		}
-		new Wall(350, 550, wallim, this);
-		new Wall(350, 600, wallim, this);
-
+		
+		// load maze
+		maze1.createMaze1();
+		
 		// load bonus reward (appears in new place every game)
 		if (randIndex == 1) {
 			new BonusReward(550, 350, r2, this, score);
