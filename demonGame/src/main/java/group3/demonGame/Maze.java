@@ -13,6 +13,8 @@ public class Maze {
 	GameManager gm;
 	int width;
 	int height;
+	Image wallim = Toolkit.getDefaultToolkit().getImage("src/image/wall.png");
+
 	/**
 	 * constructor for the Maze class
 	 * @param manager GameManager instance
@@ -27,7 +29,6 @@ public class Maze {
 	 * create 1 version of a maze
 	 */
 	public void createMaze1() {
-		Image wallim = Toolkit.getDefaultToolkit().getImage("src/image/wall.png");
 		for (int i = 0; i < width; i += 50) {
 			new Wall(i, 0, wallim, gm);
 			new Wall(i, height - 50, wallim, gm);
