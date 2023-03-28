@@ -1,6 +1,8 @@
-package group3.demonGame;
+package group3.demonGame.Frames;
 
 import javax.swing.JFrame;
+
+import group3.demonGame.GameManager;
 
 /**
  *

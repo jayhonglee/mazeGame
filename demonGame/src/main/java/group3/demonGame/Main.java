@@ -1,5 +1,7 @@
 package group3.demonGame;
 
+import group3.demonGame.Frames.MenuFrame;
+
 /**
  * Main method for the game, run the game from this method.
  * 

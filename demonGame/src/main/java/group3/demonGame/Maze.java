@@ -3,6 +3,8 @@ package group3.demonGame;
 import java.awt.Image;
 import java.awt.Toolkit;
 
+import group3.demonGame.Objects.Wall;
+
 /**
  * creates a Maze using the Wall class
  * 
@@ -17,14 +19,16 @@ public class Maze {
 
 	/**
 	 * constructor for the Maze class
+	 * 
 	 * @param manager GameManager instance
 	 */
-	public Maze(GameManager manager){
+	public Maze(GameManager manager) {
 		this.gm = manager;
 		width = gm.windowWidth;
 		height = gm.windowHeight;
-		
+
 	}
+
 	/**
 	 * create 1 version of a maze
 	 */

@@ -1,16 +1,20 @@
-package group3.demonGame;
+package group3.demonGame.Objects;
 
 import java.awt.Image;
 
+import group3.demonGame.GameManager;
+import group3.demonGame.GameObj;
+
 /**
- * Create a gameobj wall by a default image size gm.squareSizeW X gm.squareSizeH. Set a number 2 in the cell contain a wall  
+ * Create a gameobj wall by a default image size gm.squareSizeW X
+ * gm.squareSizeH. Set a number 2 in the cell contain a wall
  * 
  * @author zeyoup
- * @param x X coordiante of wall
- * @param y Y coordainte of wall
+ * @param x  X coordiante of wall
+ * @param y  Y coordainte of wall
  * @param ig a wall iamge
- * @param w width of wall image
- * @param h height of wall image
+ * @param w  width of wall image
+ * @param h  height of wall image
  * @param gm gamemanager
  */
 

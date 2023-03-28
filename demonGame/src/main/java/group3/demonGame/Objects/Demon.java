@@ -1,9 +1,13 @@
-package group3.demonGame;
+package group3.demonGame.Objects;
 
 import java.awt.Image;
 
+import group3.demonGame.GameManager;
+import group3.demonGame.GameObj;
 
-/**image resource from https://www.bing.com/images/search?view=detailV2&ccid=8ONaPRIK&id=9E904C9F463EEF473A7B9C95F3D877F5567EFDDC&thid=
+/**
+ * image resource from
+ * https://www.bing.com/images/search?view=detailV2&ccid=8ONaPRIK&id=9E904C9F463EEF473A7B9C95F3D877F5567EFDDC&thid=
  * OIP.8ONaPRIKofHQ3QxjHeCmyQAAAA&mediaurl=https%3A%2F%2Fimages-wixmp-ed30a86b8c4ca887773594c2.wixmp.com%
  * 2Ff%2F18527ba2-6cdb-42e8-b5bf-1a43b8ea5bd3%2Fdd9i6k4-9gm.squareSize77db9-9438-4da8-8b21-2ff540aca1bf.png%2Fv1%2Ffit%2Fw_1gm.squareSize%
  * 2Ch_1gm.squareSize%2Cstrp%2Ftactimon_sprite_by_hamurand22_dd9i6k4-1gm.squareSize.png%3Ftoken%3DeyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.ey
@@ -26,16 +30,17 @@ public class Demon extends GameObj {
 	boolean right = false;
 
 	/**
-	 * Create gameObj demon by using default size setting(gm.squareSize w x gm.squareSize h). Set 3 in a cell that contain a demon.
+	 * Create gameObj demon by using default size setting(gm.squareSize w x
+	 * gm.squareSize h). Set 3 in a cell that contain a demon.
 	 * 
-	 * @param x X coordinate of demon
-	 * @param y Y coordinate of demon
+	 * @param x  X coordinate of demon
+	 * @param y  Y coordinate of demon
 	 * @param ig image of demon from Image repo
-	 * @param h height of demon image
-	 * @param w width of demon image
+	 * @param h  height of demon image
+	 * @param w  width of demon image
 	 * @param gm GameManager
 	 */
-	
+
 	public Demon(int x, int y, Image ig, GameManager gm) {
 		super(x, y, ig, gm);
 		gm.pf.set(x / gm.squareSize, y / gm.squareSize, gm.objList.size() - 1, 3);
@@ -49,13 +54,15 @@ public class Demon extends GameObj {
 	/**
 	 * Update demon movement to one cell.
 	 * The movement can be up,down, left or right.
-	 * When demon get a cell contain regularReward, get reward and remove regualrReward.
+	 * When demon get a cell contain regularReward, get reward and remove
+	 * regualrReward.
 	 * When demon get a cell contain BonusReward, get reward and remove BonusReward.
 	 * When demon get a cell contain Enemies, game over.
 	 * When demon get a cell contain traps, get punishment and remove traps.
-	 * When demon get a cell contain door, if get all regular, you pass the door and win.
+	 * When demon get a cell contain door, if get all regular, you pass the door and
+	 * win.
 	 */
-	
+
 	public void update() {
 		if (up && gm.pf.canPath(x / gm.squareSize, y / gm.squareSize - 1)) {
 			y -= gm.squareSize;
@@ -69,48 +76,48 @@ public class Demon extends GameObj {
 		if (right && gm.pf.canPath(x / gm.squareSize + 1, y / gm.squareSize)) {
 			x += gm.squareSize;
 		}
-		//collision
-		for (GameObj gameObj:gm.objList){
+		// collision
+		for (GameObj gameObj : gm.objList) {
 			if (gameObj instanceof Demon)
 				continue;
 
-			if (gameObj instanceof RegularReward){
-				if ((gameObj.x==this.x)&&(gameObj.y==this.y)){
-					RegularReward rR= (RegularReward) gameObj;
+			if (gameObj instanceof RegularReward) {
+				if ((gameObj.x == this.x) && (gameObj.y == this.y)) {
+					RegularReward rR = (RegularReward) gameObj;
 					rR.getReward();
 					gm.objList.remove(gameObj);
 					break;
 				}
-			}else if (gameObj instanceof  BonusReward){
-				if ((gameObj.x==this.x)&&(gameObj.y==this.y)){
-					BonusReward bR= (BonusReward) gameObj;
+			} else if (gameObj instanceof BonusReward) {
+				if ((gameObj.x == this.x) && (gameObj.y == this.y)) {
+					BonusReward bR = (BonusReward) gameObj;
 					bR.getReward();
 					gm.objList.remove(gameObj);
 					break;
 				}
-			}else if(gameObj instanceof Enemies){
-				if ((gameObj.x==this.x)&&(gameObj.y==this.y)) {
+			} else if (gameObj instanceof Enemies) {
+				if ((gameObj.x == this.x) && (gameObj.y == this.y)) {
 					gm.win = false;
 					gm.gameDone = true;
 				}
-			}else if (gameObj instanceof Trap){
-				if ((gameObj.x==this.x)&&(gameObj.y==this.y)) {
+			} else if (gameObj instanceof Trap) {
+				if ((gameObj.x == this.x) && (gameObj.y == this.y)) {
 					Trap tr = (Trap) gameObj;
 					tr.trapCatch();
 					gm.objList.remove(gameObj);
 					break;
 				}
-			}else if (gameObj instanceof Door){
-				if ((gameObj.x==this.x)&&(gameObj.y==this.y)) {
+			} else if (gameObj instanceof Door) {
+				if ((gameObj.x == this.x) && (gameObj.y == this.y)) {
 
-					boolean hasAllRegular=false;
-					for (GameObj gameObj1:gm.objList){
-						if (gameObj1 instanceof RegularReward){
-							hasAllRegular=true;
+					boolean hasAllRegular = false;
+					for (GameObj gameObj1 : gm.objList) {
+						if (gameObj1 instanceof RegularReward) {
+							hasAllRegular = true;
 							break;
 						}
 					}
-					if (!hasAllRegular){
+					if (!hasAllRegular) {
 						gm.win = true;
 						gm.gameDone = true;
 					}
@@ -118,16 +125,16 @@ public class Demon extends GameObj {
 			}
 		}
 
-	
 	}
 
-	
 	/**
-	 * Set keyboard listener for demon movement. It is true that demon move up or down or left or right if a keyboard kc is pressed. 
+	 * Set keyboard listener for demon movement. It is true that demon move up or
+	 * down or left or right if a keyboard kc is pressed.
 	 * 
-	 * @param kc  a int number map to W A S D on keyboard when Judge the movement direction.
+	 * @param kc a int number map to W A S D on keyboard when Judge the movement
+	 *           direction.
 	 */
-	
+
 	public void move(int kc) {
 		if (kc == 87) {
 			up = true;
@@ -140,14 +147,15 @@ public class Demon extends GameObj {
 		}
 	}
 
-	
 	/**
-	 * Set keyboard listener for demon movement. It is false that demon move up or down or left or right if a keyboard kc is released. 
+	 * Set keyboard listener for demon movement. It is false that demon move up or
+	 * down or left or right if a keyboard kc is released.
 	 * 
-	 * @param kc  a int number map to W A S D on keyboard when Judge the movement direction
+	 * @param kc a int number map to W A S D on keyboard when Judge the movement
+	 *           direction
 	 *
 	 */
-	
+
 	public void release(int kc) {
 		if (kc == 87) {
 			up = false;

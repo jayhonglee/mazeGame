@@ -1,8 +1,10 @@
-package group3.demonGame;
+package group3.demonGame.Utility;
 
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.PriorityQueue;
+
+import group3.demonGame.GameManager;
 
 /**
  * 
@@ -168,7 +170,8 @@ public class Pathfinder {
 				 */
 				break;
 			}
-			if (!(0 <= temp.x && temp.x < gm.windowWidth / gm.squareSize && 0 <= temp.y && temp.y < gm.windowHeight / gm.squareSize)
+			if (!(0 <= temp.x && temp.x < gm.windowWidth / gm.squareSize && 0 <= temp.y
+					&& temp.y < gm.windowHeight / gm.squareSize)
 					|| tempMap[temp.y][temp.x].hl) {
 				continue;
 			}

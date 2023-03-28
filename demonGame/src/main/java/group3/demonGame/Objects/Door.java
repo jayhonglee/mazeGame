@@ -1,9 +1,12 @@
-package group3.demonGame;
+package group3.demonGame.Objects;
 
 import java.awt.Image;
 
+import group3.demonGame.GameManager;
+import group3.demonGame.GameObj;
 
-/**https://www.bing.com/images/search?view=detailV2&ccid=C3a3cXKF&id=7FD89D
+/**
+ * https://www.bing.com/images/search?view=detailV2&ccid=C3a3cXKF&id=7FD89D
  * CCDCCAF80AFC060421951CF5C5BD0B5452&thid=OIP.C3a3cXKFs-vUfnVueZ3FNgAAAA&me
  * diaurl=https%3a%2f%2fimg.itch.zone%2faW1hZ2UvNTI0Nzg4LzI3MjU2OTMucG5n%2f347
  * x500%2fvWUurR.png&cdnurl=https%3a%2f%2fth.bing.com%2fth%2fid%2fR.0b76b7717285b
@@ -14,22 +17,22 @@ import java.awt.Image;
  * Create a gameObj door with defualt size(50w x 50h)
  * 
  * @author zeyoup
- * @param x X coordinate of door
- * @param y Y coodrinate of door
+ * @param x  X coordinate of door
+ * @param y  Y coodrinate of door
  * @param ig image of door from IMage repo
- * @param w width of door image
- * @param h height of door image
+ * @param w  width of door image
+ * @param h  height of door image
  * @param gm gamemanager
  */
 
-public class Door extends GameObj{
+public class Door extends GameObj {
 
 	public Door(int x, int y, Image ig, GameManager gm) {
 		super(x, y, ig, gm);
 	}
-	public Door(int x,int y, int w, int h, Image ig, GameManager gm) {
+
+	public Door(int x, int y, int w, int h, Image ig, GameManager gm) {
 		super(x, y, w, h, ig, gm);
-		}
-	
-	
+	}
+
 }

@@ -1,4 +1,4 @@
-package group3.demonGame;
+package group3.demonGame.Frames;
 
 /**
  *
