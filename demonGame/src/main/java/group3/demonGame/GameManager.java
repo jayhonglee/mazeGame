@@ -34,8 +34,8 @@ public class GameManager extends JPanel implements Runnable {
 	 * screen settings
 	 */
 	// size of gameplay area (game map)
-	public int widw = 1000; // width
-	public int widh = 800; // height
+	public int windowWidth = 1000; // width
+	public int windowHeight = 800; // height
 
 	/**
 	 * time and score
