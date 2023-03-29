@@ -52,7 +52,7 @@ public class BonusReward extends GameObj {
      */
     public void getReward() {
         // this.gm.score += points;
-        score.increaseScore(points);
+        score.changeScore(points);
     }
 
     @Override

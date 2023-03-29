@@ -24,7 +24,7 @@ public class Trap extends GameObj {
 
     public void trapCatch() {
         // this.gm.score += points;
-        score.increaseScore(points);
+        score.changeScore(points);
         // if(this.gm.score<0){
         // this.gm.win = false;
         // gm.gameDone = true;

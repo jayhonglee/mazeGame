@@ -33,7 +33,7 @@ public class Score {
 	 * 
 	 * @param the value desired to increase the score by
 	 */
-	public void increaseScore(int value) {
+	public void changeScore(int value) {
 		score += value;
 		if (score < 0) {
 			this.gm.win = false;
