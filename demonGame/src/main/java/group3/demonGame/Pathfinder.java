@@ -125,6 +125,12 @@ public class Pathfinder {
 				}
 			}
 		}
+		/**
+		 * find the smallest number in the cell around the given coordinate for demon cell(must !=0), the cell contain the number create a path.
+		 * 
+		 *@param dx X coordinate demon 
+		 *@param dy Y coordinate of demon
+		 **/
 		PriorityQueue<queueEle> q = new PriorityQueue<>(eleCmp);
 		int dx = gm.dm.x / gm.squareSize;
 		int dy = gm.dm.y / gm.squareSize;
@@ -152,20 +158,6 @@ public class Pathfinder {
 
 				}
 
-				// Zeyou's
-				// for (int i = 0; i < path.size(); i++) {
-				// System.out.println(path.get(i).x + "\t" + path.get(i).y);
-				// }
-				/*
-				 * for(int i=0;i<main.windowHeight/gm.squareSize;i++) {
-				 * for(int j=0;j<main.windowWidth510;j++) {
-				 * //System.out.print(tempMap[i][j].c+tempMap[i][j].e);
-				 * System.out.print(tempMap[i][j].c);
-				 * System.out.print("\t");
-				 * }
-				 * System.out.println(" ");
-				 * }
-				 */
 				break;
 			}
 			if (!(0 <= temp.x && temp.x < gm.windowWidth / gm.squareSize && 0 <= temp.y
