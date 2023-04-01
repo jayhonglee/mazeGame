@@ -42,12 +42,6 @@ public class Score {
 	}
 
 	/**
-	 * subtract from the score's value and check if the score <0 (lose condition)
-	 * 
-	 * @param the value desired to decrease the score by
-	 */
-
-	/**
 	 * display the score on game screen (UI)
 	 * 
 	 * @param g
