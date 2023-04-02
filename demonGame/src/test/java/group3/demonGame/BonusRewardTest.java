@@ -7,11 +7,11 @@ import java.awt.Toolkit;
 import org.junit.Test;
 
 /**
- * Unit test for RegularReward class.
+ * Unit (and integration) test for RegularReward class.
  */
-public class RegularRewardTest {
+public class BonusRewardTest {
     /**
-     * Test the regular reward point displaying the correct value
+     * Test the changeScore() method (positive numbers only)
      */
     @Test
     public void checkRegularRewardPoints() {
