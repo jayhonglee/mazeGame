@@ -26,4 +26,8 @@ public class RegularReward extends GameObj {
         // this.gm.score += points;
         score.changeScore(points);
     }
+
+    public int getPoints() {
+        return this.points;
+    }
 }
