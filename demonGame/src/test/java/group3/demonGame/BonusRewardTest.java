@@ -7,19 +7,21 @@ import java.awt.Toolkit;
 import org.junit.Test;
 
 /**
- * Unit (and integration) test for RegularReward class.
+ * Unit test for BonusReward class.
  */
 public class BonusRewardTest {
     /**
-     * Test the changeScore() method (positive numbers only)
+     * Test the bonus reward point displaying the correct value
      */
     @Test
     public void checkRegularRewardPoints() {
+        int expectedPoints = 200;
+
         GameManager gm = new GameManager();
         Score score = new Score(gm);
         Image r1 = Toolkit.getDefaultToolkit().getImage("");
-        RegularReward rw1 = new RegularReward(0, 0, r1, gm, score);
+        BonusReward bonuseReward = new BonusReward(0, 0, r1, gm, score);
 
-        assertEquals(100, rw1.getPoints());
+        assertEquals(expectedPoints, bonuseReward.getPoints());
     }
 }

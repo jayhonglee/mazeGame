@@ -15,11 +15,13 @@ public class RegularRewardTest {
      */
     @Test
     public void checkRegularRewardPoints() {
+        int expectedPoints = 100;
+
         GameManager gm = new GameManager();
         Score score = new Score(gm);
         Image r1 = Toolkit.getDefaultToolkit().getImage("");
         RegularReward rw1 = new RegularReward(0, 0, r1, gm, score);
 
-        assertEquals(100, rw1.getPoints());
+        assertEquals(expectedPoints, rw1.getPoints());
     }
 }

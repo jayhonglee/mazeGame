@@ -55,6 +55,10 @@ public class BonusReward extends GameObj {
         score.changeScore(points);
     }
 
+    public int getPoints() {
+        return this.points;
+    }
+
     @Override
     public void update() {
         if (count >= 10) {
