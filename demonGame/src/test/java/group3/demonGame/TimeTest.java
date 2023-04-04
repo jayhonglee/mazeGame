@@ -12,12 +12,14 @@ public class TimeTest {
 
 	@Before
 	public void setUp() {
-		GameManager gm = new GameManager();
+		gm = new GameManager();
 		TimeUnderTest= new Time(gm);
 	}
 
 
-
+	/**
+	 * check seconds to minute conversion
+	 */
 	@Test
 	public void testGetMinutes() {
 		int a=TimeUnderTest.getMinutes(60);
@@ -26,6 +28,9 @@ public class TimeTest {
 		assertEquals( 1, b);
 	}
 
+	/**
+	 * check seconds to seconds - minutes conversion
+	 */
 	@Test
 	public void testGetSeconds() {
 		int a=TimeUnderTest.getMinutes(60);
