@@ -64,8 +64,12 @@ public class ScoreTest
     	GameManager gm = new GameManager();
     	Score testee = new Score(gm);
     	
-    	testee.changeScore(-100);
+    	//should lose in both cases
+        testee.changeScore(9900); // high score should not end game
         assertFalse( gm.win );
+    	testee.changeScore(-10000);
+        assertFalse( gm.win );
+
     }
     
     /**
@@ -76,8 +80,11 @@ public class ScoreTest
     {
     	GameManager gm = new GameManager();
     	Score testee = new Score(gm);
-    	
-    	testee.changeScore(-100);
+    	//as long as score > 0, game should continue
+    	testee.changeScore(100);
+        assertFalse( gm.gameDone );
+        //game should end, since score <0
+    	testee.changeScore(-200);
         assertTrue( gm.gameDone );
     }
     
