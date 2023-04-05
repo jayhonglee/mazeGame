@@ -56,7 +56,7 @@ public class ScoreTest
     }
     
     /**
-     * Test the Score class interaction with GameManager class
+     * Test the Score class interaction with GameManager class (win or lose)
      */
     @Test
     public void interactionGameWin()
@@ -69,7 +69,7 @@ public class ScoreTest
     }
     
     /**
-     * Test the Score class interaction with GameManager class
+     * Test the Score class interaction with GameManager class (game over or not)
      */
     @Test
     public void interactionGameDone()

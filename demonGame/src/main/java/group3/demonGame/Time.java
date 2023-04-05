@@ -29,6 +29,8 @@ public class Time {
 		if (sec >= 60) {
 			this.minutes = (int) (sec / 60);
 			this.seconds = sec % 60;
+		} else if (sec == 0) {
+			minutes = 0;
 		}
 		return minutes;
 	}

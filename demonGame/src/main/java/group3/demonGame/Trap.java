@@ -21,13 +21,13 @@ public class Trap extends GameObj {
         super(x, y, ig, gm);
         this.score = score;
     }
+    
+    public int getPoints() {
+        return this.points;
+    }
 
     public void trapCatch() {
-        // this.gm.score += points;
         score.changeScore(points);
-        // if(this.gm.score<0){
-        // this.gm.win = false;
-        // gm.gameDone = true;
-        // }
+
     }
 }

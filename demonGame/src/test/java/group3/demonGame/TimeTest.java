@@ -24,8 +24,12 @@ public class TimeTest {
 	public void testGetMinutes() {
 		int a=TimeUnderTest.getMinutes(60);
 		int b=TimeUnderTest.getMinutes(90);
+		int c=TimeUnderTest.getMinutes(0);
+
 		assertEquals( 1, a);
 		assertEquals( 1, b);
+		assertEquals( 0, c);
+
 	}
 
 	/**
@@ -33,12 +37,15 @@ public class TimeTest {
 	 */
 	@Test
 	public void testGetSeconds() {
-		int a=TimeUnderTest.getMinutes(60);
+		TimeUnderTest.getMinutes(60);
 		int a1=TimeUnderTest.getSeconds();
-		int b=TimeUnderTest.getMinutes(90);
+		TimeUnderTest.getMinutes(90);
 		int b1=TimeUnderTest.getSeconds();
+		TimeUnderTest.getMinutes(0);
+		int c1=TimeUnderTest.getSeconds();
 		assertEquals( 0, a1);
 		assertEquals( 30, b1);
+		assertEquals( 0, c1);
 	}
 
 	

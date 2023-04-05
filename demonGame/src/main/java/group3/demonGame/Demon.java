@@ -133,13 +133,13 @@ public class Demon extends GameObj {
 	 */
 
 	public void move(int kc) {
-		if (kc == 87) {
+		if (kc == 87) { // W
 			up = true;
-		} else if (kc == 83) {
+		} else if (kc == 83) { // A
 			down = true;
-		} else if (kc == 65) {
+		} else if (kc == 65) { // S
 			left = true;
-		} else if (kc == 68) {
+		} else if (kc == 68) { // D
 			right = true;
 		}
 	}
@@ -154,13 +154,13 @@ public class Demon extends GameObj {
 	 */
 
 	public void release(int kc) {
-		if (kc == 87) {
+		if (kc == 87) { // W
 			up = false;
-		} else if (kc == 83) {
+		} else if (kc == 83) { // A
 			down = false;
-		} else if (kc == 65) {
+		} else if (kc == 65) { // S
 			left = false;
-		} else if (kc == 68) {
+		} else if (kc == 68) { // D
 			right = false;
 		}
 	}
