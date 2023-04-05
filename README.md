@@ -6,7 +6,7 @@ Repository for Group 3's CMPT276 game.
 -   How to Run the game: After building the game, run `java -jar target/demonGame-0.0.1-SNAPSHOT.jar` to run the game.
 -   How to Test the game: Run `mvn test` in terminal to test the game.
 
-**Note: For the graphics used in the game to load properly, the root directory has to be the demonGame due to resources' paths. Please make sure the game is called from the demonGame directory. We recommend using IDE's such as Eclipse & Apache Netbeans as the above steps are automatically taken care for you.**
+**Note: For the graphics used in the game to load properly, the root directory has to be the demonGame due to resources' paths. Please make sure the game is called from the demonGame directory.**
 
 ---
 
