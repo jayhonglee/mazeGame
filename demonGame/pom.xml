@@ -70,5 +70,23 @@
         </plugin>
       </plugins>
     </pluginManagement>
+    <!-- Added Maven JAR plugin -->
+    <plugins>
+      <plugin>
+        <!-- Build an executable JAR -->
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-jar-plugin</artifactId>
+        <version>3.1.0</version>
+        <configuration>
+          <archive>
+            <manifest>
+              <addClasspath>true</addClasspath>
+              <!-- here we specify that we want to use the main method within the App class -->
+              <mainClass>group3.demonGame.Main</mainClass>
+            </manifest>
+          </archive>
+        </configuration>
+      </plugin>
+    </plugins>
   </build>
 </project>
