@@ -85,6 +85,8 @@
               <mainClass>group3.demonGame.Main</mainClass>
             </manifest>
           </archive>
+          <finalName>demonGame</finalName>
+          <outputDirectory>${project.basedir}</outputDirectory>
         </configuration>
       </plugin>
     </plugins>

@@ -2,11 +2,17 @@
 
 Repository for Group 3's CMPT276 game.
 
--   How to Build the game: Run `mvn clean package` in terminal to build an executable file in the target directory.
--   How to Run the game: After building the game, run `java -jar target/demonGame-0.0.1-SNAPSHOT.jar` to run the game.
--   How to Test the game: Run `mvn test` in terminal to test the game.
+Instructions:
 
-**Note: For the graphics used in the game to load properly, the root directory has to be the demonGame due to resources' paths. Please make sure the game is called from the demonGame directory.**
+_To use the following maven automations, please ensure that you are calling these commands from the 276project/demonGame directory and have [Apache Maven installed](https://maven.apache.org/install.html)_
+
+-   Clean existing artifacts to create new ones: `mvn clean && del demonGame.jar`.
+-   How to Build the game: Run `mvn package` in terminal to build an executable file in the target directory. This will create an executable demonGame.jar in the 276project/demonGame directory as well as a target folder.
+-   How to Run the game: After building the game, run `java -jar demonGame.jar` to run the game.
+-   How to Test the game: Run `mvn test` in terminal to test the game.
+-   How to create documentation (Javadocs): Run `mvn site` in terminal to create HTML files for Java code documentation.
+
+**Note: For the graphics used in the game to load properly, the game should be called from the 276project/demonGame directory.**
 
 ---
 
