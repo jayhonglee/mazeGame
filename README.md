@@ -1,6 +1,6 @@
 # 276project
 
-Repository for Group 3's CMPT276 maze game aka "DemonGame".
+Repository for Group 3's CMPT276 maze game aka "DemonGame."
 For the ease of everybody, the executable game file demonGame.jar and Javadocs have been created and included in the repository. The demonGame.jar file is located inside 276project/demonGame and the Javadocs are inside 276project/demonGame/target/site directory.
 
 Instructions:
