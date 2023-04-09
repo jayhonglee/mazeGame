@@ -1,16 +1,17 @@
 # 276project
 
-Repository for Group 3's CMPT276 game.
+Repository for Group 3's CMPT276 maze game aka "DemonGame".
+For the ease of everybody, the executable game file demonGame.jar and Javadocs have been created and included in the repository. The demonGame.jar file is located inside 276project/demonGame and the Javadocs are inside 276project/demonGame/target/site directory.
 
 Instructions:
 
-_To use the following maven automations, please ensure that you are calling these commands from the 276project/demonGame directory and have [Apache Maven installed](https://maven.apache.org/install.html)_
+_To use the following maven automations, please ensure that you are calling these commands from the 276project/demonGame directory and have [Apache Maven installed](https://maven.apache.org/install.html)._
 
 -   Clean existing artifacts to create new ones: `mvn clean && del demonGame.jar`.
--   How to Build the game: Run `mvn package` in terminal to build an executable file in the target directory. This will create an executable demonGame.jar in the 276project/demonGame directory as well as a target folder.
+-   How to Build the game: `mvn package`. This will create an executable demonGame.jar in the 276project/demonGame directory as well as a target folder.
 -   How to Run the game: After building the game, run `java -jar demonGame.jar` to run the game.
--   How to Test the game: Run `mvn test` in terminal to test the game.
--   How to create documentation (Javadocs): Run `mvn site` in terminal to create HTML files for Java code documentation.
+-   How to Test the game: `mvn test`.
+-   How to create documentation (Javadocs): `mvn site` to create HTML files for Java code documentation.
 
 **Note: For the graphics used in the game to load properly, the game should be called from the 276project/demonGame directory.**
 
