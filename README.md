@@ -27,6 +27,14 @@ _Note: To ensure proper loading of game graphics, call the game from the_ `276pr
 
 ---
 
+## UML Diagram
+
+### Class Diagram
+
+Here is the UML class diagram representing the key classes and their relationships in DemonGame:
+
+![Class Diagram](/Documents/UML_Diagram_Final.png)
+
 ### Credits
 
 -   [Regular reward (sprite)](https://graph.baidu.com/pcpage/similar?originSign=126f485bc504a85850d5401679107792&srcp=crs_pc_similar&tn=pc&idctag=gz&sids=1077595_1080051_1080824_1085874_1085752&gsid=&session_id=17316955970479476862&entrance=general&tpl_from=pc&pageFrom=graph_upload_pcshitu&inspire=general&image=http%3A%2F%2Fmms0.baidu.com%2Fit%2Fu%3D2317220067,749554139%26fm%3D253%26app%3D138%26f%3DPNG%3Fw%3D500%26h%3D500&carousel=503&index=3&page=3&shituToken=c17dbd)
